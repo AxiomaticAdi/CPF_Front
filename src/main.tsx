@@ -6,6 +6,8 @@ import "./index.css";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage.tsx";
 import CalendarPage from "./pages/CalendarPage.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import FaqPage from "./pages/FaqPage.tsx";
 
 const router = createHashRouter([
 	{
@@ -16,6 +18,16 @@ const router = createHashRouter([
 	{
 		path: "/calendar",
 		element: <CalendarPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/about",
+		element: <AboutPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/faq",
+		element: <FaqPage />,
 		errorElement: <ErrorPage />,
 	},
 ]);
