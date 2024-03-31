@@ -13,8 +13,8 @@ export default function AboutPage() {
 				<div className="flex flex-col max-w-96 gap-2">
 					<h1 className="text-xl font-bold text-center">Meet the Chef</h1>
 					<p className="text-left">
-						Chef Mark Pelliccia's culinary journey started from the age of ten,
-						when his family moved from New York to San Diego, and his father
+						Chef Mark Pelliccia's culinary journey started at the age of ten,
+						when his family moved from New York to San Diego and his father
 						opened up the Italian restaurant Luigi’s at the Beach in Mission
 						Beach. After high school, following his passion for food,
 						18-year-old Mark set out alone to Italy with intentions to attend
