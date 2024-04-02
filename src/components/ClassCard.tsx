@@ -1,11 +1,18 @@
+import { Link } from "react-router-dom";
+
 interface ClassCardProps {
+	classId: number;
 	classTitle: string;
 	imageUrl: string;
 }
 
-export default function ClassCard({ classTitle, imageUrl }: ClassCardProps) {
+export default function ClassCard({
+	classId,
+	classTitle,
+	imageUrl,
+}: ClassCardProps) {
 	return (
-		<div>
+		<Link to={`/classes/${classId}`}>
 			<div className="relative flex flex-col items-center justify-center h-96 w-64 rounded-md overflow-hidden hover:scale-105">
 				<img
 					src={imageUrl}
@@ -18,6 +25,6 @@ export default function ClassCard({ classTitle, imageUrl }: ClassCardProps) {
 					</button>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 }
