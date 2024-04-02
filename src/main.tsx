@@ -9,6 +9,7 @@ import CalendarPage from "./pages/CalendarPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import FaqPage from "./pages/FaqPage.tsx";
 import ClassesProvider from "./contexts/ClassesProvider.tsx";
+import ClassDetailsPage from "./pages/ClassDetailsPage.tsx";
 
 const router = createHashRouter([
 	{
@@ -29,6 +30,11 @@ const router = createHashRouter([
 	{
 		path: "/faq",
 		element: <FaqPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/classes/:classId",
+		element: <ClassDetailsPage />,
 		errorElement: <ErrorPage />,
 	},
 ]);

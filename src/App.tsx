@@ -13,6 +13,7 @@ const videoHeroUrl =
 
 function App() {
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+	console.log(cookingClasses);
 
 	return (
 		<Page>
