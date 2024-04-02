@@ -16,6 +16,7 @@
 		"@headlessui/react": "^1.7.17",
 		"@heroicons/react": "^2.1.1",
 		"axios": "^1.6.5",
+		"firebase": "^10.10.0",
 		"react": "^18.2.0",
 		"react-calendar": "^4.8.0",
 		"react-confetti": "^6.1.0",
