@@ -1,5 +1,5 @@
 export type CookingClass = {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 	imageUrl: string;

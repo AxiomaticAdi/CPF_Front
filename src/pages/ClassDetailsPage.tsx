@@ -6,8 +6,16 @@ import { CookingClass } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function ClassDetailsPage() {
-	const { classId } = useParams();
+	const { classId } = useParams<{ classId: string }>();
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+
+	if (isLoading) {
+		return (
+			<Page>
+				<LoadingSpinner />
+			</Page>
+		);
+	}
 
 	if (!classId) {
 		return (
@@ -17,8 +25,9 @@ export default function ClassDetailsPage() {
 		);
 	}
 
-	const idNum: number = parseInt(classId, 10);
-	const cookingClass: CookingClass = cookingClasses.find((c) => c.id === idNum);
+	const cookingClass: CookingClass = cookingClasses.find(
+		(c) => c.id === classId
+	)!;
 
 	const [isReserving, setIsReserving] = useState(false);
 
@@ -34,14 +43,6 @@ export default function ClassDetailsPage() {
 			alert("Sorry, the class is fully booked.");
 		}
 	};
-
-	if (isLoading) {
-		return (
-			<Page>
-				<LoadingSpinner />
-			</Page>
-		);
-	}
 
 	if (!cookingClass) {
 		return (

@@ -8,8 +8,8 @@ import LoadingSpinner from "./components/LoadingSpinner";
 const heroImageUrl =
 	"https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
-const videoHeroUrl =
-	"https://res.cloudinary.com/djxfhec23/video/upload/v1711001488/CPF/foodvideo_a7dvrp.mp4";
+// const videoHeroUrl =
+// 	"https://res.cloudinary.com/djxfhec23/video/upload/v1711001488/CPF/foodvideo_a7dvrp.mp4";
 
 function App() {
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);

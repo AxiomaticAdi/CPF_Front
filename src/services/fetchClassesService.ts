@@ -18,7 +18,7 @@ export async function fetchCookingClasses(): Promise<CookingClass[]> {
 			const endTime = data.EndDateTime.toDate();
 
 			const classItem: CookingClass = {
-				id: data.ClassId,
+				id: doc.id,
 				name: data.Name,
 				description: data.Description,
 				imageUrl: data.ImageUrl,
