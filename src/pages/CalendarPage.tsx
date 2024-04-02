@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import Page from "../components/Page";
-import { cookingClasses } from "../data";
 import { compareDates } from "../logic/dateLogic";
+
+import { fetchCookingClasses } from "../services/fetchClassesService";
 
 import "../styles/Calendar.css";
 import ClassCard from "../components/ClassCard";
+import { CookingClass } from "../types";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function CalendarPage() {
 	const [value, onChange] = useState<Value>(new Date());
+	const [cookingClasses, setCookingClasses] = useState<CookingClass[]>([]);
+
+	useEffect(() => {
+		fetchCookingClasses().then(setCookingClasses);
+	}, []);
 
 	interface TileContentProps {
 		activeStartDate: Date;
