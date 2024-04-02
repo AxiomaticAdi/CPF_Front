@@ -8,6 +8,7 @@ import ErrorPage from "./pages/ErrorPage.tsx";
 import CalendarPage from "./pages/CalendarPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import FaqPage from "./pages/FaqPage.tsx";
+import ClassesProvider from "./contexts/ClassesProvider.tsx";
 
 const router = createHashRouter([
 	{
@@ -34,6 +35,8 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<ClassesProvider>
+			<RouterProvider router={router} />
+		</ClassesProvider>
 	</React.StrictMode>
 );

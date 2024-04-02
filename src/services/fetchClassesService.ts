@@ -15,13 +15,18 @@ export async function fetchCookingClasses(): Promise<CookingClass[]> {
 
 		snapshot.forEach((doc) => {
 			const data = doc.data();
+
+			// Convert Firestore timestamp to JavaScript Date
+			const startTime = data.StartDateTime.toDate();
+			const endTime = data.EndDateTime.toDate();
+
 			const classItem: CookingClass = {
 				id: data.ClassId,
 				name: data.Name,
 				description: data.Description,
 				imageUrl: data.ImageUrl,
-				startTime: new Date(data.StartDateTime),
-				endTime: new Date(data.EndDateTime),
+				startTime: startTime,
+				endTime: endTime,
 				capacity: data.Capacity,
 				sold: data.Sold,
 			};

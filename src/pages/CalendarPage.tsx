@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Calendar from "react-calendar";
 import Page from "../components/Page";
 import { compareDates } from "../logic/dateLogic";
 
-import { fetchCookingClasses } from "../services/fetchClassesService";
-
 import "../styles/Calendar.css";
 import ClassCard from "../components/ClassCard";
-import { CookingClass } from "../types";
+import ClassesContext from "../contexts/ClassesContext";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function CalendarPage() {
 	const [value, onChange] = useState<Value>(new Date());
-	const [cookingClasses, setCookingClasses] = useState<CookingClass[]>([]);
-
-	useEffect(() => {
-		fetchCookingClasses().then(setCookingClasses);
-	}, []);
+	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
 
 	interface TileContentProps {
 		activeStartDate: Date;
@@ -28,6 +23,7 @@ export default function CalendarPage() {
 
 	const decorateClassDates = ({ date }: TileContentProps) => {
 		let dayHasClass = false;
+		console.log(cookingClasses);
 
 		for (let i = 0; i < cookingClasses.length; i++) {
 			const classDate = cookingClasses[i].startTime;
@@ -38,6 +34,14 @@ export default function CalendarPage() {
 		}
 		return !dayHasClass;
 	};
+
+	if (isLoading) {
+		return (
+			<Page>
+				<LoadingSpinner />
+			</Page>
+		);
+	}
 
 	return (
 		<Page>
