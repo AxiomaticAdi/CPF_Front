@@ -17,12 +17,20 @@ export default function Navbar() {
 			path: "/calendar",
 		},
 		{
+			text: "Classes",
+			path: "/classes",
+		},
+		{
 			text: "About",
 			path: "/about",
 		},
 		{
 			text: "FAQ",
 			path: "/faq",
+		},
+		{
+			text: "Blog",
+			path: "/blog",
 		},
 	];
 
