@@ -65,7 +65,7 @@ export default function CalendarPage() {
 						.map((cookingClass) => (
 							<ClassCard
 								key={cookingClass.id}
-								classTitle={cookingClass.title}
+								classTitle={cookingClass.name}
 								imageUrl={cookingClass.imageUrl}
 							/>
 						))}

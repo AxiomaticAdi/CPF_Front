@@ -1,5 +1,3 @@
-// src/contexts/ClassesContext.tsx
-
 import { createContext } from "react";
 
 // Define the type for your context state for better type checking
