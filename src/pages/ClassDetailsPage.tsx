@@ -61,7 +61,9 @@ export default function ClassDetailsPage() {
 					className="w-96 h-60 object-cover mt-4 rounded-md"
 				/>
 				<h1 className="text-xl font-bold my-4">{cookingClass.name}</h1>
-				<p className="text-gray-600">{cookingClass.description}</p>
+				<p className="text-gray-600 max-w-96 mb-4">
+					{cookingClass.description}
+				</p>
 				<p className="mt-2">
 					<div>
 						{new Date(cookingClass.startTime).toLocaleDateString("en-US", {
