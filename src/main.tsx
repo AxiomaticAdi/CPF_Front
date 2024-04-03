@@ -10,6 +10,9 @@ import AboutPage from "./pages/AboutPage.tsx";
 import FaqPage from "./pages/FaqPage.tsx";
 import ClassesProvider from "./contexts/ClassesProvider.tsx";
 import ClassDetailsPage from "./pages/ClassDetailsPage.tsx";
+import ClassesPage from "./pages/ClassesPage.tsx";
+import BlogPage from "./pages/BlogPage.tsx";
+import BlogPostDetailsPage from "./pages/BlogPostDetailsPage.tsx";
 
 const router = createHashRouter([
 	{
@@ -33,8 +36,23 @@ const router = createHashRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
+		path: "/classes",
+		element: <ClassesPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
 		path: "/classes/:classId",
 		element: <ClassDetailsPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/blog",
+		element: <BlogPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/blog/:postId",
+		element: <BlogPostDetailsPage />,
 		errorElement: <ErrorPage />,
 	},
 ]);

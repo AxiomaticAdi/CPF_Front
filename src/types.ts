@@ -9,3 +9,12 @@ export type CookingClass = {
 	sold: number;
 	price: number;
 };
+
+export type BlogPost = {
+	id: string;
+	postTitle: string;
+	postDescription: string;
+	postContent: string;
+	postImageUrl: string;
+	postDate: string;
+};
