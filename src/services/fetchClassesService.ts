@@ -26,6 +26,7 @@ export async function fetchCookingClasses(): Promise<CookingClass[]> {
 				endTime: endTime,
 				capacity: data.Capacity,
 				sold: data.Sold,
+				price: data.Price,
 			};
 			classes.push(classItem);
 		});

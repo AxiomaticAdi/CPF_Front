@@ -7,4 +7,5 @@ export type CookingClass = {
 	endTime: Date;
 	capacity: number;
 	sold: number;
+	price: number;
 };
