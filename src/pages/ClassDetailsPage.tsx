@@ -2,12 +2,20 @@ import { useParams } from "react-router-dom";
 import Page from "../components/Page";
 import { useContext, useState } from "react";
 import ClassesContext from "../contexts/ClassesContext";
-import { CookingClass } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
+import TicketDropdown from "../components/TicketDropdown";
+import { CookingClass } from "../types";
 
 export default function ClassDetailsPage() {
 	const { classId } = useParams<{ classId: string }>();
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+	const [ticketQuantity, setTicketQuantity] = useState(1);
+	const [isReserving, setIsReserving] = useState(false);
+
+	// Find the class as soon as possible, without conditional logic
+	const cookingClass: CookingClass | undefined = cookingClasses.find(
+		(c) => c.id === classId
+	);
 
 	if (isLoading) {
 		return (
@@ -17,26 +25,20 @@ export default function ClassDetailsPage() {
 		);
 	}
 
-	if (!classId) {
+	if (!classId || !cookingClass) {
 		return (
 			<Page>
-				<p>No class ID provided</p>
+				<p>{!classId ? "No class ID provided" : "Class not found"}</p>
 			</Page>
 		);
 	}
 
-	const cookingClass: CookingClass = cookingClasses.find(
-		(c) => c.id === classId
-	)!;
-
-	const [isReserving, setIsReserving] = useState(false);
-
 	const handleReserve = () => {
-		if (cookingClass && cookingClass.sold < cookingClass.capacity) {
+		if (cookingClass.sold < cookingClass.capacity) {
 			setIsReserving(true);
 			// Simulate a reserve action
 			setTimeout(() => {
-				alert("Spot reserved successfully!");
+				alert("Ticket reserved successfully!");
 				setIsReserving(false);
 			}, 1000);
 		} else {
@@ -44,13 +46,7 @@ export default function ClassDetailsPage() {
 		}
 	};
 
-	if (!cookingClass) {
-		return (
-			<Page>
-				<p>Class not found</p>
-			</Page>
-		);
-	}
+	const remainingTickets = cookingClass.capacity - cookingClass.sold;
 
 	return (
 		<Page>
@@ -64,7 +60,7 @@ export default function ClassDetailsPage() {
 				<p className="text-gray-600 max-w-96 mb-4">
 					{cookingClass.description}
 				</p>
-				<p className="mt-2">
+				<div className="mt-2">
 					<div>
 						{new Date(cookingClass.startTime).toLocaleDateString("en-US", {
 							month: "long",
@@ -87,15 +83,28 @@ export default function ClassDetailsPage() {
 							hourCycle: "h11",
 						})}
 					</div>
-				</p>
-				<p>Available spots: {cookingClass.capacity - cookingClass.sold}</p>
-				<button
-					className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-					onClick={handleReserve}
-					disabled={isReserving || cookingClass.sold >= cookingClass.capacity}
-				>
-					{isReserving ? "Reserving..." : "Reserve Your Spot"}
-				</button>
+				</div>
+				<p>Remaining tickets: {remainingTickets}</p>
+
+				<div className="my-4 flex flex-col">
+					<h1 className="text-xl font-bold my-4">Reserve your tickets!</h1>
+					<div className="flex justify-center gap-6">
+						<TicketDropdown
+							remainingTickets={remainingTickets}
+							ticketQuantity={ticketQuantity}
+							setTicketQuantity={setTicketQuantity}
+						/>
+						<button
+							className="w-full bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
+							onClick={handleReserve}
+							disabled={
+								isReserving || cookingClass.sold >= cookingClass.capacity
+							}
+						>
+							{isReserving ? "Checking out..." : "Checkout"}
+						</button>
+					</div>
+				</div>
 			</div>
 		</Page>
 	);
