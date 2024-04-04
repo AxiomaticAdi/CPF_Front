@@ -12,7 +12,6 @@ export default function ClassDetailsPage() {
 	const [ticketQuantity, setTicketQuantity] = useState(1);
 	const [isReserving, setIsReserving] = useState(false);
 
-	// Find the class as soon as possible, without conditional logic
 	const cookingClass: CookingClass | undefined = cookingClasses.find(
 		(c) => c.id === classId
 	);
