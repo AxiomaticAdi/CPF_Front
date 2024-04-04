@@ -3,6 +3,7 @@ import {
 	PaymentElement,
 	useStripe,
 	useElements,
+	AddressElement,
 } from "@stripe/react-stripe-js";
 
 export const CheckoutForm: React.FC = () => {
@@ -37,8 +38,13 @@ export const CheckoutForm: React.FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
+			<AddressElement options={{ mode: "billing" }} />
 			<PaymentElement />
-			<button type="submit" disabled={!stripe || !elements}>
+			<button
+				className="bg-blue-500 shadow-md text-white rounded hover:bg-blue-700 px-4 py-2 mt-4"
+				type="submit"
+				disabled={!stripe || !elements}
+			>
 				Pay now
 			</button>
 		</form>
