@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Page from "../components/Page";
 import { useContext, useState } from "react";
 import ClassesContext from "../contexts/ClassesContext";
@@ -9,6 +9,7 @@ import ClassDetailsSection from "../components/ClassDetailsSection";
 
 export default function ClassDetailsPage() {
 	const { classId } = useParams<{ classId: string }>();
+	const navigate = useNavigate();
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
 	const [ticketQuantity, setTicketQuantity] = useState(1);
 	const [isReserving, setIsReserving] = useState(false);
@@ -36,11 +37,11 @@ export default function ClassDetailsPage() {
 	const handleReserve = () => {
 		if (cookingClass.sold < cookingClass.capacity) {
 			setIsReserving(true);
-			// Simulate a reserve action
+			// Navigate to checkout page after setting reservation state
 			setTimeout(() => {
-				alert("Ticket reserved successfully!");
+				navigate(`/checkout/${classId}/${ticketQuantity}`);
 				setIsReserving(false);
-			}, 1000);
+			}, 1000); // Simulating a reserve action
 		} else {
 			alert("Sorry, the class is fully booked.");
 		}
