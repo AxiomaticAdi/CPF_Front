@@ -74,8 +74,12 @@ const CheckoutPage: React.FC = () => {
 
 	return (
 		<Page>
-			<h1 className="text-2xl font-bold">Checkout</h1>
-			<ClassDetailsSection class={cookingClass} />
+			<h1 className="text-4xl font-bold">Checkout</h1>
+			<div className="flex flex-col gap-4 mx-4">
+				<ClassDetailsSection class={cookingClass} />
+				<p>Requested tickets: {ticketQuantityNum}</p>
+			</div>
+
 			{/* <Elements stripe={stripePromise}>
 				<CheckoutForm />
 			</Elements> */}
