@@ -18,19 +18,7 @@ const CheckoutPage: React.FC = () => {
 		ticketQuantity: string;
 	}>();
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
-
-	if (!classId || !ticketQuantity) {
-		return (
-			<Page>
-				<p>Error: Invalid URL parameters</p>
-			</Page>
-		);
-	}
-	const ticketQuantityNum = parseInt(ticketQuantity);
-
-	const cookingClass: CookingClass | undefined = cookingClasses.find(
-		(c) => c.id === classId
-	);
+	const ticketQuantityNum = parseInt(ticketQuantity || "0");
 
 	if (isLoading) {
 		return (
@@ -39,6 +27,18 @@ const CheckoutPage: React.FC = () => {
 			</Page>
 		);
 	}
+
+	if (!classId || isNaN(ticketQuantityNum) || ticketQuantityNum < 1) {
+		return (
+			<Page>
+				<p>Error: Invalid URL parameters</p>
+			</Page>
+		);
+	}
+
+	const cookingClass: CookingClass | undefined = cookingClasses.find(
+		(c) => c.id === classId
+	);
 
 	// Verify that the class ID and ticket quantity are valid
 	if (!cookingClass) {
@@ -56,17 +56,18 @@ const CheckoutPage: React.FC = () => {
 			</Page>
 		);
 	}
-	if (remainingTickets <= 0) {
+	if (remainingTickets <= 0 || ticketQuantityNum > remainingTickets) {
 		return (
 			<Page>
-				<p>We're sorry - this class is sold out!</p>
-			</Page>
-		);
-	}
-	if (ticketQuantityNum > remainingTickets) {
-		return (
-			<Page>
-				<p>We're sorry - there are not enough tickets left for this class!</p>
+				<div className="flex flex-col gap-4 mx-4">
+					<p>
+						We're sorry! There aren't enough tickets available for{" "}
+						{cookingClass.name} on{" "}
+						{new Date(cookingClass.startTime).toLocaleDateString("en-US", {})}
+					</p>
+					<p>Quantity requested: {ticketQuantityNum}</p>
+					<p>Remaining tickets: {remainingTickets}</p>
+				</div>
 			</Page>
 		);
 	}
