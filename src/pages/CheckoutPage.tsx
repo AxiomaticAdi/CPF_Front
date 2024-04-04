@@ -7,6 +7,7 @@ import ClassesContext from "../contexts/ClassesContext";
 import Page from "../components/Page";
 import { CookingClass } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
+import ClassDetailsSection from "../components/ClassDetailsSection";
 
 // Assume you've set your publishable key somewhere
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -73,7 +74,7 @@ const CheckoutPage: React.FC = () => {
 	return (
 		<Page>
 			<h1 className="text-2xl font-bold">Checkout</h1>
-
+			<ClassDetailsSection class={cookingClass} />
 			{/* <Elements stripe={stripePromise}>
 				<CheckoutForm />
 			</Elements> */}
