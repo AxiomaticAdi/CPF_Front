@@ -13,7 +13,6 @@ const heroImageUrl =
 
 function App() {
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
-	console.log(cookingClasses);
 
 	return (
 		<Page>
