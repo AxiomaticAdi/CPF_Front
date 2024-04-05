@@ -31,9 +31,16 @@ export const CheckoutForm: React.FC = () => {
 		setIsLoading(true);
 
 		const result = await stripe.confirmPayment({
-			// Confirm the payment with the Payment Element.
 			elements,
 			redirect: "if_required",
+			confirmParams: {
+				receipt_email: email,
+				payment_method_data: {
+					billing_details: {
+						name: name,
+					},
+				},
+			},
 		});
 
 		if (result.error) {
@@ -44,6 +51,7 @@ export const CheckoutForm: React.FC = () => {
 			if (result.paymentIntent.status === "succeeded") {
 				// Show a success message to your customer
 				console.log("Payment succeeded!");
+				//
 			}
 		}
 		setIsLoading(false);
