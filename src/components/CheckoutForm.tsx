@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	PaymentElement,
 	useStripe,
 	useElements,
 } from "@stripe/react-stripe-js";
+import { StripePaymentElementOptions } from "@stripe/stripe-js";
+import ReservationInfoForm from "./ReservationInfoForm";
 
 export const CheckoutForm: React.FC = () => {
+	const [isLoading, setIsLoading] = useState(false);
+
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+
 	const stripe = useStripe();
 	const elements = useElements();
+
+	const paymentElementOptions: StripePaymentElementOptions = {
+		layout: "tabs",
+	};
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -16,6 +27,8 @@ export const CheckoutForm: React.FC = () => {
 			// Stripe.js has not loaded yet. Make sure to disable form submission until Stripe.js has loaded.
 			return;
 		}
+
+		setIsLoading(true);
 
 		const result = await stripe.confirmPayment({
 			// Confirm the payment with the Payment Element.
@@ -33,12 +46,23 @@ export const CheckoutForm: React.FC = () => {
 				console.log("Payment succeeded!");
 			}
 		}
+		setIsLoading(false);
 	};
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<PaymentElement />
-			<button type="submit" disabled={!stripe || !elements}>
+			<ReservationInfoForm
+				name={name}
+				email={email}
+				setName={setName}
+				setEmail={setEmail}
+			/>
+			<PaymentElement id="payment-element" options={paymentElementOptions} />
+			<button
+				className="bg-blue-500 shadow-md text-white rounded hover:bg-blue-700 px-4 py-2 mt-4"
+				type="submit"
+				disabled={!stripe || !elements || isLoading}
+			>
 				Pay now
 			</button>
 		</form>
