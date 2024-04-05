@@ -6,6 +6,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import TicketDropdown from "../components/TicketDropdown";
 import { CookingClass } from "../types";
 import ClassDetailsSection from "../components/ClassDetailsSection";
+import TicketSelect from "../components/TicketSelect";
 
 export default function ClassDetailsPage() {
 	const { classId } = useParams<{ classId: string }>();
@@ -61,6 +62,11 @@ export default function ClassDetailsPage() {
 							ticketQuantity={ticketQuantity}
 							setTicketQuantity={setTicketQuantity}
 						/>
+						<TicketSelect
+							remainingTickets={remainingTickets}
+							ticketQuantity={ticketQuantity}
+							setTicketQuantity={setTicketQuantity}
+						/>
 						<button
 							className="w-full bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
 							onClick={handleReserve}
@@ -72,6 +78,7 @@ export default function ClassDetailsPage() {
 						</button>
 					</div>
 				</div>
+				<div className="py-10"></div>
 			</div>
 		</Page>
 	);

@@ -29,31 +29,18 @@ export default function TicketDropdown({
 				<Listbox.Button className="flex items-center gap-2 bg-white border border-gray-300 rounded-md shadow-sm p-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
 					{ticketQuantity} <ChevronDownIcon className="h-4 w-4" />
 				</Listbox.Button>
-				<Listbox.Options className="mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+				<Listbox.Options className="absolute z-10 mt-1 bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
 					{ticketOptions.map((ticketNumber) => (
 						<Listbox.Option
 							key={ticketNumber}
 							value={ticketNumber}
 							className={({ active }) =>
-								`relative cursor-default select-none py-2 pl-10 pr-4 ${
+								`relative cursor-default select-none py-2 px-4 ${
 									active ? "bg-indigo-100 text-indigo-900" : "text-gray-900"
 								}`
 							}
 						>
-							{({ selected }) => (
-								<>
-									<span
-										className={`${selected ? "font-medium" : "font-normal"} block truncate`}
-									>
-										{ticketNumber} Tickets
-									</span>
-									{selected ? (
-										<span className="absolute inset-y-0 left-0 flex items-center pl-3 text-indigo-600">
-											{/* Checkmark icon or similar visual cue */}
-										</span>
-									) : null}
-								</>
-							)}
+							{ticketNumber} Tickets
 						</Listbox.Option>
 					))}
 				</Listbox.Options>
