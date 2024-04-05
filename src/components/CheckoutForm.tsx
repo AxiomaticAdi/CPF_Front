@@ -50,7 +50,7 @@ export const CheckoutForm: React.FC = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleSubmit} className="flex flex-col gap-4">
 			<ReservationInfoForm
 				name={name}
 				email={email}

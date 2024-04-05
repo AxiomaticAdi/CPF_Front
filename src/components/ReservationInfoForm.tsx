@@ -11,6 +11,9 @@ export default function ReservationInfoForm({
 	setName,
 	setEmail,
 }: ReservationInfoFormProps) {
+	// TODO: Add email validation
+	// TODO: Add name validation
+
 	return (
 		<div className="flex flex-col gap-2 my-2">
 			<div>
