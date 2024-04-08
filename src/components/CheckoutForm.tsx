@@ -6,8 +6,20 @@ import {
 } from "@stripe/react-stripe-js";
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import ReservationInfoForm from "./ReservationInfoForm";
+import { verifyClassAvailability } from "../services/verifyAvailabilityService";
+import { updatePaymentIntent } from "../services/paymentIntentService";
 
-export const CheckoutForm: React.FC = () => {
+interface CheckoutFormProps {
+	classId: string;
+	ticketQuantity: number;
+	clientSecret: string;
+}
+
+export default function CheckoutForm({
+	classId,
+	ticketQuantity,
+	clientSecret,
+}: CheckoutFormProps) {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [name, setName] = useState("");
@@ -29,6 +41,24 @@ export const CheckoutForm: React.FC = () => {
 		}
 
 		setIsLoading(true);
+
+		// TODO: Add validation
+
+		// Verify class availability
+		if (!(await verifyClassAvailability(classId, ticketQuantity.toString()))) {
+			alert(
+				"Sorry, there is an issue with class availability. Please refresh the page."
+			);
+			return;
+		}
+
+		// Update payment intent
+		try {
+			await updatePaymentIntent(clientSecret, name, email);
+		} catch (error) {
+			console.error("Error updating payment intent:", error);
+			return;
+		}
 
 		const result = await stripe.confirmPayment({
 			elements,
@@ -75,4 +105,4 @@ export const CheckoutForm: React.FC = () => {
 			</button>
 		</form>
 	);
-};
+}

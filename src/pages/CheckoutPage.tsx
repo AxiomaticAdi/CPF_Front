@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { CheckoutForm } from "../components/CheckoutForm";
+import CheckoutForm from "../components/CheckoutForm";
 import ClassesContext from "../contexts/ClassesContext";
 import Page from "../components/Page";
 import { CookingClass } from "../types";
@@ -112,7 +112,11 @@ const CheckoutPage: React.FC = () => {
 			<div className="flex flex-wrap gap-4 my-6">
 				<div className="flex flex-col gap-4 mx-4 md:w-96">
 					<Elements stripe={stripePromise} options={{ clientSecret }}>
-						<CheckoutForm />
+						<CheckoutForm
+							classId={classId}
+							ticketQuantity={ticketQuantityNum}
+							clientSecret={clientSecret}
+						/>
 					</Elements>
 				</div>
 
