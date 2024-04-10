@@ -4,7 +4,7 @@ export async function updatePaymentIntent(
 	customerEmail: string
 ): Promise<void> {
 	console.log("Updating payment intent...");
-	const url = "/update-payment-intent";
+	const url = "http://localhost:3000/update-payment-intent";
 	const response = await fetch(url, {
 		method: "POST",
 		headers: {

@@ -9,7 +9,6 @@ import { CookingClass } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ClassDetailsSection from "../components/ClassDetailsSection";
 
-// Assume you've set your publishable key somewhere
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const CheckoutPage: React.FC = () => {
