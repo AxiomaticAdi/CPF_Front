@@ -114,7 +114,6 @@ const CheckoutPage: React.FC = () => {
 						<CheckoutForm
 							classId={classId}
 							ticketQuantity={ticketQuantityNum}
-							clientSecret={clientSecret}
 						/>
 					</Elements>
 				</div>

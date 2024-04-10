@@ -7,18 +7,15 @@ import {
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import ReservationInfoForm from "./ReservationInfoForm";
 import { verifyClassAvailability } from "../services/verifyAvailabilityService";
-import { updatePaymentIntent } from "../services/paymentIntentService";
 
 interface CheckoutFormProps {
 	classId: string;
 	ticketQuantity: number;
-	clientSecret: string;
 }
 
 export default function CheckoutForm({
 	classId,
 	ticketQuantity,
-	clientSecret,
 }: CheckoutFormProps) {
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -52,22 +49,20 @@ export default function CheckoutForm({
 			return;
 		}
 
-		// Update payment intent
-		try {
-			await updatePaymentIntent(clientSecret, name, email);
-		} catch (error) {
-			console.error("Error updating payment intent:", error);
-			return;
-		}
-
+		// Save name and email to payment confirmation
 		const result = await stripe.confirmPayment({
 			elements,
 			redirect: "if_required",
 			confirmParams: {
 				receipt_email: email,
-				payment_method_data: {
-					billing_details: {
-						name: name,
+				shipping: {
+					name: name,
+					address: {
+						line1: "15775 Castle Peak Lane",
+						city: "Jamul",
+						state: "CA",
+						postal_code: "91935",
+						country: "US",
 					},
 				},
 			},
