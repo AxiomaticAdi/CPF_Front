@@ -24,7 +24,7 @@ const CheckoutPage: React.FC = () => {
 	useEffect(() => {
 		const fetchPaymentIntent = async () => {
 			const response = await fetch(
-				"http://localhost:3000/create-payment-intent",
+				`${import.meta.env.VITE_BACKEND_URL}/create-payment-intent`,
 				{
 					method: "POST",
 					headers: {

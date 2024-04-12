@@ -4,7 +4,7 @@ export async function verifyClassAvailability(
 ): Promise<boolean> {
 	console.log("Verifying class availability...");
 	const response = await fetch(
-		"http://localhost:3000/verify-class-availability",
+		`${import.meta.env.VITE_BACKEND_URL}/verify-class-availability`,
 		{
 			method: "POST",
 			headers: {
