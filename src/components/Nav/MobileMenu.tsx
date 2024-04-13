@@ -2,10 +2,10 @@ import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "./NavBar";
+import { CustomLink } from "./NavBar";
 
 interface MobileMenuProps {
-	links: Link[];
+	links: CustomLink[];
 }
 export default function MobileMenu({ links }: MobileMenuProps) {
 	return (

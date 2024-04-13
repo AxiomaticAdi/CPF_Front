@@ -1,13 +1,13 @@
 import WebMenu from "./WebMenu";
 import MobileMenu from "./MobileMenu";
 
-export type Link = {
+export type CustomLink = {
 	text: string;
 	path: string;
 };
 
 export default function Navbar() {
-	const links: Link[] = [
+	const links: CustomLink[] = [
 		{
 			text: "Home",
 			path: "/",
