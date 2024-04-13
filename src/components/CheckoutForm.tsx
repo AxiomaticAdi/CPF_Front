@@ -76,7 +76,7 @@ export default function CheckoutForm({
 			if (result.paymentIntent.status === "succeeded") {
 				// Show a success message to your customer
 				console.log("Payment succeeded!");
-				//
+				// TODO: Redirect to success page
 			}
 		}
 		setIsLoading(false);
