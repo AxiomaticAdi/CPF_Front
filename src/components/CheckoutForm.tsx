@@ -8,6 +8,7 @@ import {
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import ReservationInfoForm from "./ReservationInfoForm";
 import { verifyClassAvailability } from "../services/verifyAvailabilityService";
+import { useNavigate } from "react-router-dom";
 
 interface CheckoutFormProps {
 	classId: string;
@@ -30,6 +31,7 @@ export default function CheckoutForm({
 
 	const stripe = useStripe();
 	const elements = useElements();
+	const navigate = useNavigate();
 
 	const paymentElementOptions: StripePaymentElementOptions = {
 		layout: "tabs",
@@ -90,11 +92,11 @@ export default function CheckoutForm({
 			// Show error to your customer (e.g., payment details incomplete)
 			console.error(paymentResult.error.message);
 		} else {
-			// The payment has been processed!
+			// If payment succeeded redirect to success page
 			if (paymentResult.paymentIntent.status === "succeeded") {
-				// Show a success message to your customer
 				console.log("Payment succeeded!");
-				// TODO: Redirect to success page
+				// Redirect to success page
+				navigate("/order-complete");
 			}
 		}
 		setIsLoading(false);
