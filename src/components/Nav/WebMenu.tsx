@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import { Link } from "./NavBar";
+import { Link, NavLink } from "react-router-dom";
+import { CustomLink } from "./NavBar";
 
 interface WebMenuProps {
-	links: Link[];
+	links: CustomLink[];
 }
 export default function WebMenu({ links }: WebMenuProps) {
 	// Calculate the middle index to split the links
@@ -28,13 +28,13 @@ export default function WebMenu({ links }: WebMenuProps) {
 					</NavLink>
 				))}
 
-				<div className="mx-auto">
+				<Link className="mx-auto" to={"/"}>
 					<img
 						src={"cpf_logo.webp"}
 						alt="Castle Peak Farms Logo"
 						className="h-44 w-44"
 					/>
-				</div>
+				</Link>
 
 				{secondHalfLinks.map(({ text, path }, index) => (
 					<NavLink

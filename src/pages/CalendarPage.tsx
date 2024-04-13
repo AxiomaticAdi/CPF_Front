@@ -21,7 +21,9 @@ export default function CalendarPage() {
 		view: string;
 	}
 
-	const decorateClassDates = ({ date }: TileContentProps) => {
+	const decorateClassDates = ({ date, view }: TileContentProps) => {
+		if (view !== "month") return false;
+
 		let dayHasClass = false;
 
 		for (let i = 0; i < cookingClasses.length; i++) {
@@ -48,6 +50,7 @@ export default function CalendarPage() {
 			<Calendar
 				onChange={onChange}
 				value={value}
+				defaultView="month"
 				tileDisabled={decorateClassDates}
 			/>
 			<div className="flex flex-row flex-wrap gap-4 my-8">

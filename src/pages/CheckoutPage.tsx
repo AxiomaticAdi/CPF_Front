@@ -106,7 +106,7 @@ const CheckoutPage: React.FC = () => {
 		<Page>
 			<h1 className="text-4xl font-bold">Checkout</h1>
 			<p className="my-2">Requested tickets: {ticketQuantityNum}</p>
-			<div className="flex flex-wrap gap-4 my-6">
+			<div className="flex flex-wrap gap-4 my-6 justify-center">
 				<div className="flex flex-col gap-4 mx-4 md:w-96">
 					<Elements stripe={stripePromise} options={{ clientSecret }}>
 						<CheckoutForm

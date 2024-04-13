@@ -14,6 +14,7 @@ import ClassesPage from "./pages/ClassesPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPostDetailsPage from "./pages/BlogPostDetailsPage.tsx";
 import CheckoutPage from "./pages/CheckoutPage.tsx";
+import OrderSuccessPage from "./pages/OrderSuccessPage.tsx";
 
 const router = createHashRouter([
 	{
@@ -59,6 +60,11 @@ const router = createHashRouter([
 	{
 		path: "/checkout/:classId/:ticketQuantity",
 		element: <CheckoutPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/order-complete",
+		element: <OrderSuccessPage />,
 		errorElement: <ErrorPage />,
 	},
 ]);
