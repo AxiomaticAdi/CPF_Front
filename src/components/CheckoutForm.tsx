@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { z } from "zod";
 import {
 	PaymentElement,
 	useStripe,
@@ -13,14 +14,19 @@ interface CheckoutFormProps {
 	ticketQuantity: number;
 }
 
+const schema = z.object({
+	name: z.string().min(1, "Name is required"),
+	email: z.string().email("Invalid email address"),
+});
+
 export default function CheckoutForm({
 	classId,
 	ticketQuantity,
 }: CheckoutFormProps) {
 	const [isLoading, setIsLoading] = useState(false);
-
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
+	const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
 	const stripe = useStripe();
 	const elements = useElements();
@@ -39,18 +45,30 @@ export default function CheckoutForm({
 
 		setIsLoading(true);
 
-		// TODO: Add validation
+		// Validate form data using Zod
+		const validationResult = schema.safeParse({ name, email });
+		if (!validationResult.success) {
+			setErrors({
+				name: validationResult.error.formErrors.fieldErrors.name?.[0],
+				email: validationResult.error.formErrors.fieldErrors.email?.[0],
+			});
+			setIsLoading(false);
+			return;
+		}
+
+		setErrors({}); // Clear errors on successful validation
 
 		// Verify class availability
 		if (!(await verifyClassAvailability(classId, ticketQuantity.toString()))) {
 			alert(
 				"Sorry, there is an issue with class availability. Please refresh the page."
 			);
+			setIsLoading(false);
 			return;
 		}
 
-		// Save name and email to payment confirmation
-		const result = await stripe.confirmPayment({
+		// Proceed with Stripe payment confirmation
+		const paymentResult = await stripe.confirmPayment({
 			elements,
 			redirect: "if_required",
 			confirmParams: {
@@ -68,12 +86,12 @@ export default function CheckoutForm({
 			},
 		});
 
-		if (result.error) {
+		if (paymentResult.error) {
 			// Show error to your customer (e.g., payment details incomplete)
-			console.error(result.error.message);
+			console.error(paymentResult.error.message);
 		} else {
 			// The payment has been processed!
-			if (result.paymentIntent.status === "succeeded") {
+			if (paymentResult.paymentIntent.status === "succeeded") {
 				// Show a success message to your customer
 				console.log("Payment succeeded!");
 				// TODO: Redirect to success page
@@ -90,6 +108,8 @@ export default function CheckoutForm({
 				setName={setName}
 				setEmail={setEmail}
 			/>
+			{errors?.name && <p className="text-red-500">{errors.name}</p>}
+			{errors?.email && <p className="text-red-500">{errors.email}</p>}
 			<PaymentElement id="payment-element" options={paymentElementOptions} />
 			<button
 				className="bg-blue-500 shadow-md text-white rounded hover:bg-blue-700 px-4 py-2 mt-4"
