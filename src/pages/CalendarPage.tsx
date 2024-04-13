@@ -23,7 +23,6 @@ export default function CalendarPage() {
 
 	const decorateClassDates = ({ date }: TileContentProps) => {
 		let dayHasClass = false;
-		console.log(cookingClasses);
 
 		for (let i = 0; i < cookingClasses.length; i++) {
 			const classDate = cookingClasses[i].startTime;
