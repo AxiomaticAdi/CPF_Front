@@ -94,8 +94,6 @@ const CheckoutPage: React.FC = () => {
 		);
 	}
 
-	console.log(clientSecret || "Client secret is null");
-
 	if (!clientSecret) {
 		return (
 			<Page>

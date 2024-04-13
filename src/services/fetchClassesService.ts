@@ -3,7 +3,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { CookingClass } from "../types";
 
 export async function fetchCookingClasses(): Promise<CookingClass[]> {
-	console.log("Fetching data...");
 	const classesCollection = collection(db, "Classes");
 
 	try {

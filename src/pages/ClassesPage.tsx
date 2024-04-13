@@ -6,7 +6,6 @@ import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function ClassesPage() {
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
-	console.log(cookingClasses);
 
 	return (
 		<Page>
