@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Styles.css";
+import NavButton from "./NavButton";
 
 interface HeroProps {
 	backgroundImageUrl: string;
@@ -20,9 +21,7 @@ const Hero: React.FC<HeroProps> = ({ backgroundImageUrl }) => {
 				<h1 className="text-4xl font-bold text-white drop-shadow-md mb-8">
 					Farm Fresh Cooking Classes
 				</h1>
-				<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-					Upcoming events
-				</button>
+				<NavButton buttonText="Book now" navigateTo="/classes" />
 			</div>
 		</div>
 	);

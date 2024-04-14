@@ -2,7 +2,7 @@ const testimonials = [
 	[
 		[
 			{
-				body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+				body: "Attending a farm-to-table cooking class was an unforgettable date experience! Amazing, fresh, vibrant and delicious food that had our last restaurant experience completely beat. Highly recommended!",
 				author: {
 					name: "Leslie Alexander",
 					handle: "lesliealexander",
@@ -10,37 +10,33 @@ const testimonials = [
 						"https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 				},
 			},
-			// More testimonials...
 		],
 		[
 			{
-				body: "Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut officia rem nulla blanditiis.",
+				body: "Chef Mark's charisma and humor are the soul of these cooking classes. His storytelling from years of professional chef experience, paired with expert cooking tips, made the whole experience both educational and fun!",
 				author: {
-					name: "Lindsay Walton",
-					handle: "lindsaywalton",
-					imageUrl:
-						"https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+					name: "Adi Rudra",
+					handle: "adiexplores",
+					imageUrl: "/instagram/adiexplores.jpeg",
 				},
 			},
-			// More testimonials...
 		],
 	],
 	[
 		[
 			{
-				body: "Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae saepe corrupti.",
+				body: "The serene setting of the farm added so much to the cooking class. Cooking in the middle of nature, with the sounds of the farm and the scent of fresh earth made it a truly grounding experience. It's a perfect escape from the city!",
 				author: {
-					name: "Tom Cook",
+					name: "Bill Clefford",
 					handle: "tomcook",
 					imageUrl:
 						"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 				},
 			},
-			// More testimonials...
 		],
 		[
 			{
-				body: "Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.",
+				body: "I loved how the class was structured! Starting from the basics of choosing the right ingredients on the farm to complex cooking techniques, Chef Mark ensured that everyone, regardless of their cooking level, learned something valuable.",
 				author: {
 					name: "Leonard Krasner",
 					handle: "leonardkrasner",
@@ -48,7 +44,6 @@ const testimonials = [
 						"https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 				},
 			},
-			// More testimonials...
 		],
 	],
 ];
@@ -92,7 +87,7 @@ export default function Testimonials() {
 												src={testimonial.author.imageUrl}
 												alt=""
 											/>
-											<div>
+											<div className="text-left">
 												<div className="font-semibold">
 													{testimonial.author.name}
 												</div>

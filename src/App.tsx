@@ -5,11 +5,16 @@ import Page from "./components/Page";
 import ClassesContext from "./contexts/ClassesContext";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Testimonials from "./components/Testimonials";
+import NavButton from "./components/NavButton";
 
 const heroImageUrl =
 	"https://res.cloudinary.com/djxfhec23/image/upload/v1713051912/CPF/veggies_vczxpb.webp";
 
-const bestSellers = ["jIr3H0xFlkggDefGrYQi", "k6pfJPNuLYasSm2A3pb9"];
+const bestSellers = [
+	"jIr3H0xFlkggDefGrYQi",
+	"k6pfJPNuLYasSm2A3pb9",
+	"DrPPFQ2SYr4h2Y3KhPf1",
+];
 
 function App() {
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
@@ -28,8 +33,8 @@ function App() {
 				<Hero backgroundImageUrl={heroImageUrl} />
 				<div className="flex flex-col gap-4">
 					<div>
-						<h1 className="text-4xl font-bold my-8">Bestselling classes</h1>
-						<div className="flex flex-wrap gap-8 max-w-2xl items-center justify-center mx-auto">
+						<h1 className="text-4xl font-bold my-8">Bestsellers</h1>
+						<div className="flex flex-wrap gap-8 items-center justify-center mx-auto">
 							{cookingClasses.map((cookingClass) => {
 								if (bestSellers.includes(cookingClass.id)) {
 									return (
@@ -42,6 +47,9 @@ function App() {
 									);
 								} else return null;
 							})}
+						</div>
+						<div className="pt-6">
+							<NavButton buttonText="More classes!" navigateTo="/classes" />
 						</div>
 					</div>
 					<div className="pt-4">
