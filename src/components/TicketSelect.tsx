@@ -6,6 +6,10 @@ interface TicketSelectProps {
 	setTicketQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
+function isTicketPlural(ticketQuantity: number) {
+	return ticketQuantity > 1 ? "Tickets" : "Ticket";
+}
+
 export default function TicketSelect({
 	remainingTickets,
 	ticketQuantity,
@@ -35,7 +39,7 @@ export default function TicketSelect({
 			>
 				{ticketOptions.map((ticketNumber) => (
 					<option key={ticketNumber} value={ticketNumber}>
-						{ticketNumber} Tickets
+						{ticketNumber} {isTicketPlural(ticketNumber)}
 					</option>
 				))}
 			</select>
