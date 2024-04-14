@@ -6,10 +6,7 @@ export default function AboutPage() {
 			<h1 className="text-4xl font-bold mb-6">About</h1>
 
 			<div className="flex flex-wrap items-center justify-center w-full gap-8">
-				<img
-					src="https://res.cloudinary.com/djxfhec23/image/upload/v1711083955/CPF/chefmark_vu2wiw.jpg"
-					className="max-w-96 rounded-md"
-				/>
+				<img src="/chef-mark.jpg" className="max-w-96 rounded-md" />
 				<div className="flex flex-col max-w-96 gap-2">
 					<h1 className="text-xl font-bold text-center">Meet the Chef</h1>
 					<p className="text-left">
