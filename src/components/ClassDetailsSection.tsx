@@ -17,7 +17,7 @@ export default function ClassDetailsSection({
 			/>
 			<h1 className="text-xl font-bold my-4">{cookingClass.name}</h1>
 			<p className="text-gray-600 max-w-96 mb-4">{cookingClass.description}</p>
-			<div className="mt-2">
+			<div className="mt-2 font-semibold">
 				<div>
 					{new Date(cookingClass.startTime).toLocaleDateString("en-US", {
 						month: "long",
@@ -41,7 +41,7 @@ export default function ClassDetailsSection({
 					})}
 				</div>
 			</div>
-			<p>Remaining tickets: {remainingTickets}</p>
+			<p>{remainingTickets} remaining tickets</p>
 		</div>
 	);
 }
