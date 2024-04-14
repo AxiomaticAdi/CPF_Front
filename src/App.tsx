@@ -4,35 +4,49 @@ import Hero from "./components/Hero";
 import Page from "./components/Page";
 import ClassesContext from "./contexts/ClassesContext";
 import LoadingSpinner from "./components/LoadingSpinner";
+import Testimonials from "./components/Testimonials";
 
 const heroImageUrl =
-	"https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+	"https://res.cloudinary.com/djxfhec23/image/upload/v1713051912/CPF/veggies_vczxpb.webp";
 
-// const videoHeroUrl =
-// 	"https://res.cloudinary.com/djxfhec23/video/upload/v1711001488/CPF/foodvideo_a7dvrp.mp4";
+const bestSellers = ["jIr3H0xFlkggDefGrYQi", "k6pfJPNuLYasSm2A3pb9"];
 
 function App() {
 	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+
+	if (isLoading) {
+		return (
+			<Page>
+				<LoadingSpinner />
+			</Page>
+		);
+	}
 
 	return (
 		<Page>
 			<div className="flex flex-col items-center gap-8 mb-48">
 				<Hero backgroundImageUrl={heroImageUrl} />
-				<div className="flex flex-col">
-					<h1 className="text-4xl font-bold my-8">Upcoming classes</h1>
-					<div className="flex flex-wrap gap-8 max-w-2xl items-center justify-center">
-						{isLoading ? (
-							<LoadingSpinner />
-						) : (
-							cookingClasses.map((cookingClass) => (
-								<ClassCard
-									key={cookingClass.id}
-									classId={cookingClass.id}
-									classTitle={cookingClass.name}
-									imageUrl={cookingClass.imageUrl}
-								/>
-							))
-						)}
+				<div className="flex flex-col gap-4">
+					<div>
+						<h1 className="text-4xl font-bold my-8">Bestselling classes</h1>
+						<div className="flex flex-wrap gap-8 max-w-2xl items-center justify-center mx-auto">
+							{cookingClasses.map((cookingClass) => {
+								if (bestSellers.includes(cookingClass.id)) {
+									return (
+										<ClassCard
+											key={cookingClass.id}
+											classId={cookingClass.id}
+											classTitle={cookingClass.name}
+											imageUrl={cookingClass.imageUrl}
+										/>
+									);
+								} else return null;
+							})}
+						</div>
+					</div>
+					<div className="pt-4">
+						<h1 className="text-4xl font-bold mt-8">Happy, full customers</h1>
+						<Testimonials />
 					</div>
 				</div>
 			</div>
