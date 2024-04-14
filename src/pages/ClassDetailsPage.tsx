@@ -3,7 +3,6 @@ import Page from "../components/Page";
 import { useContext, useState } from "react";
 import ClassesContext from "../contexts/ClassesContext";
 import LoadingSpinner from "../components/LoadingSpinner";
-import TicketDropdown from "../components/TicketDropdown";
 import { CookingClass } from "../types";
 import ClassDetailsSection from "../components/ClassDetailsSection";
 import TicketSelect from "../components/TicketSelect";
@@ -55,20 +54,15 @@ export default function ClassDetailsPage() {
 			<div className="flex flex-col items-center">
 				<ClassDetailsSection class={cookingClass} />
 				<div className="my-4 flex flex-col">
-					<h1 className="text-xl font-bold my-4">Reserve your tickets!</h1>
+					<h1 className="text-xl font-bold my-4">Reserve now!</h1>
 					<div className="flex justify-center gap-6">
-						<TicketDropdown
-							remainingTickets={remainingTickets}
-							ticketQuantity={ticketQuantity}
-							setTicketQuantity={setTicketQuantity}
-						/>
 						<TicketSelect
 							remainingTickets={remainingTickets}
 							ticketQuantity={ticketQuantity}
 							setTicketQuantity={setTicketQuantity}
 						/>
 						<button
-							className="w-full bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
+							className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
 							onClick={handleReserve}
 							disabled={
 								isReserving || cookingClass.sold >= cookingClass.capacity

@@ -31,7 +31,7 @@ export default function TicketSelect({
 			<select
 				value={ticketQuantity}
 				onChange={handleChange}
-				className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+				className="block w-32 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
 			>
 				{ticketOptions.map((ticketNumber) => (
 					<option key={ticketNumber} value={ticketNumber}>
