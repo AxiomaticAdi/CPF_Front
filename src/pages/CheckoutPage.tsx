@@ -105,7 +105,13 @@ const CheckoutPage: React.FC = () => {
 	return (
 		<Page>
 			<h1 className="text-4xl font-bold">Checkout</h1>
-			<p className="my-2">Requested tickets: {ticketQuantityNum}</p>
+			<div className="my-2">
+				<p>Requested tickets: {ticketQuantityNum}</p>
+				<p className="font-bold text-green-600">
+					Total price: ${ticketQuantityNum * cookingClass.price}
+				</p>
+			</div>
+
 			<div className="flex flex-wrap gap-4 my-6 justify-center">
 				<div className="flex flex-col gap-4 mx-4 md:w-96">
 					<Elements stripe={stripePromise} options={{ clientSecret }}>

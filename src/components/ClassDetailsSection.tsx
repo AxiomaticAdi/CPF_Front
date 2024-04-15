@@ -1,4 +1,5 @@
 import { CookingClass } from "../types";
+import BadgePrice from "./Badges/BadgePrice";
 
 interface ClassDetailsSectionProps {
 	class: CookingClass;
@@ -10,11 +11,15 @@ export default function ClassDetailsSection({
 	const remainingTickets = cookingClass.capacity - cookingClass.sold;
 	return (
 		<div className="flex flex-col items-center">
-			<img
-				src={cookingClass.imageUrl}
-				alt={cookingClass.name}
-				className="w-96 h-60 object-cover mt-4 rounded-md"
-			/>
+			<div className="w-80 sm:w-96 h-60 rounded-md relative">
+				<img
+					src={cookingClass.imageUrl}
+					alt={cookingClass.name}
+					className="w-full h-full rounded-md object-cover"
+				/>
+				<BadgePrice price={cookingClass.price} />
+			</div>
+
 			<h1 className="text-xl font-bold my-4">{cookingClass.name}</h1>
 			<p className="text-gray-600 max-w-96 mb-4">{cookingClass.description}</p>
 			<div className="mt-2 font-semibold">

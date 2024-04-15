@@ -114,7 +114,7 @@ export default function CheckoutForm({
 			{errors?.email && <p className="text-red-500">{errors.email}</p>}
 			<PaymentElement id="payment-element" options={paymentElementOptions} />
 			<button
-				className="bg-blue-500 shadow-md text-white rounded hover:bg-blue-700 px-4 py-2 mt-4"
+				className="bg-green-600 hover:bg-green-800 text-white font-bold mt-2 py-2 px-4 rounded"
 				type="submit"
 				disabled={!stripe || !elements || isLoading}
 			>

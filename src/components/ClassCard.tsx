@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CookingClass } from "../types";
-import BadgeSoldOut from "./BadgeSoldOut";
+import BadgeSoldOut from "./Badges/BadgeSoldOut";
 
 interface ClassCardProps {
 	cookingClass: CookingClass;
@@ -18,10 +18,13 @@ export default function ClassCard({ cookingClass }: ClassCardProps) {
 					alt="Class"
 					className="absolute inset-0 w-full h-full object-cover"
 				/>
-				<div className="relative z-10 flex flex-col items-center justify-end h-full mx-4">
-					<button className="bg-mountain-stone w-full text-white rounded-md text-xl m-4">
-						{cookingClass.name}
-					</button>
+				{/* Gradient Overlay */}
+				<div className="absolute bottom-0 w-full h-1/5 bg-gradient-to-t from-black to-transparent">
+					<div className="flex h-full justify-center items-end py-4">
+						<h1 className="text-xl font-bold text-white">
+							{cookingClass.name}
+						</h1>
+					</div>
 				</div>
 			</div>
 		</Link>
