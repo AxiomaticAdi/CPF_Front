@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { CookingClass } from "../types";
-import BadgeSoldOut from "./BadgeSoldOut";
+import BadgeSoldOut from "./Badges/BadgeSoldOut";
 
 interface ClassCardProps {
 	cookingClass: CookingClass;
