@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import { CookingClass } from "../types";
+import BadgeSoldOut from "./BadgeSoldOut";
 
 interface ClassCardProps {
 	cookingClass: CookingClass;
 }
 
 export default function ClassCard({ cookingClass }: ClassCardProps) {
+	const isSoldOut: boolean = cookingClass.capacity - cookingClass.sold < 1;
+
 	return (
 		<Link to={`/classes/${cookingClass.id}`}>
 			<div className="relative flex flex-col items-center justify-center h-96 w-64 rounded-md overflow-hidden hover:scale-105">
+				<BadgeSoldOut isSoldOut={isSoldOut} />
 				<img
 					src={cookingClass.imageUrl}
 					alt="Class"
