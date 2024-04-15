@@ -11,7 +11,7 @@ export default function ClassDetailsSection({
 	const remainingTickets = cookingClass.capacity - cookingClass.sold;
 	return (
 		<div className="flex flex-col items-center">
-			<div className="w-96 h-60 rounded-md relative">
+			<div className="w-80 sm:w-96 h-60 rounded-md relative">
 				<img
 					src={cookingClass.imageUrl}
 					alt={cookingClass.name}
