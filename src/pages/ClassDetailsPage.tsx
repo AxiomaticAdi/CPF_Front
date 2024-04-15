@@ -61,15 +61,17 @@ export default function ClassDetailsPage() {
 							ticketQuantity={ticketQuantity}
 							setTicketQuantity={setTicketQuantity}
 						/>
-						<button
-							className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
-							onClick={handleReserve}
-							disabled={
-								isReserving || cookingClass.sold >= cookingClass.capacity
-							}
-						>
-							{isReserving ? "Checking out..." : "Checkout"}
-						</button>
+						{remainingTickets > 0 && (
+							<button
+								className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
+								onClick={handleReserve}
+								disabled={
+									isReserving || cookingClass.sold >= cookingClass.capacity
+								}
+							>
+								{isReserving ? "Checking out..." : "Checkout"}
+							</button>
+						)}
 					</div>
 				</div>
 				<div className="py-10"></div>
