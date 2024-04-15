@@ -40,9 +40,7 @@ function App() {
 									return (
 										<ClassCard
 											key={cookingClass.id}
-											classId={cookingClass.id}
-											classTitle={cookingClass.name}
-											imageUrl={cookingClass.imageUrl}
+											cookingClass={cookingClass}
 										/>
 									);
 								} else return null;
