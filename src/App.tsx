@@ -7,9 +7,6 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import Testimonials from "./components/Testimonials";
 import NavButton from "./components/NavButton";
 
-const heroImageUrl =
-	"https://res.cloudinary.com/djxfhec23/image/upload/v1713051912/CPF/veggies_vczxpb.webp";
-
 const bestSellers = [
 	"jIr3H0xFlkggDefGrYQi",
 	"k6pfJPNuLYasSm2A3pb9",
@@ -30,7 +27,7 @@ function App() {
 	return (
 		<Page>
 			<div className="flex flex-col items-center gap-8 mb-48">
-				<Hero backgroundImageUrl={heroImageUrl} />
+				<Hero />
 				<div className="flex flex-col gap-4">
 					<div>
 						<h1 className="text-4xl font-bold my-8">Bestsellers</h1>

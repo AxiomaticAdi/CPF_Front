@@ -1,16 +1,19 @@
-import React from "react";
 import "../styles/Styles.css";
 import NavButton from "./NavButton";
 
-interface HeroProps {
-	backgroundImageUrl: string;
-}
-
-const Hero: React.FC<HeroProps> = ({ backgroundImageUrl }) => {
+export default function Hero() {
 	return (
 		<div className="relative flex justify-center items-center w-screen min-h-96">
 			<img
-				src={backgroundImageUrl}
+				sizes="100vw"
+				srcSet="https://res.cloudinary.com/djxfhec23/image/upload/f_auto/q_auto/c_scale,w_256/v1713051912/CPF/veggies_vczxpb.webp 256w,
+				https://res.cloudinary.com/djxfhec23/image/upload/f_auto/q_auto/c_scale,w_512/v1713051912/CPF/veggies_vczxpb.webp 512w,
+				https://res.cloudinary.com/djxfhec23/image/upload/f_auto/q_auto/c_scale,w_1024/v1713051912/CPF/veggies_vczxpb.webp 1024w,
+				https://res.cloudinary.com/djxfhec23/image/upload/f_auto/q_auto/c_scale,w_2048/v1713051912/CPF/veggies_vczxpb.webp 2048w,
+				https://res.cloudinary.com/djxfhec23/image/upload/f_auto/q_auto/c_scale,w_4096/v1713051912/CPF/veggies_vczxpb.webp 4096w"
+				src={
+					"https://res.cloudinary.com/djxfhec23/image/upload/f_auto/q_auto/c_scale,w_1024/v1713051912/CPF/veggies_vczxpb.webp"
+				}
 				alt="Background of the hero section"
 				className="absolute w-full h-full object-cover z-0"
 			/>
@@ -27,6 +30,4 @@ const Hero: React.FC<HeroProps> = ({ backgroundImageUrl }) => {
 			</div>
 		</div>
 	);
-};
-
-export default Hero;
+}
