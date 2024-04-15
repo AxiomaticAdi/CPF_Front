@@ -49,29 +49,41 @@ export default function ClassDetailsPage() {
 
 	const remainingTickets = cookingClass.capacity - cookingClass.sold;
 
+	if (remainingTickets <= 0) {
+		return (
+			<Page>
+				<div className="flex flex-col items-center">
+					<ClassDetailsSection class={cookingClass} />
+					<h1 className="text-xl font-bold text-red-500 my-4">
+						{" "}
+						We're sorry, this class is fully booked!
+					</h1>
+				</div>
+			</Page>
+		);
+	}
+
 	return (
 		<Page>
 			<div className="flex flex-col items-center">
 				<ClassDetailsSection class={cookingClass} />
-				<div className="my-4 flex flex-col">
-					<h1 className="text-xl font-bold my-4">Reserve now!</h1>
+				<div className="flex flex-col gap-2 my-8">
+					<h1 className="text-xl font-bold">Reserve now!</h1>
 					<div className="flex justify-center gap-6">
 						<TicketSelect
 							remainingTickets={remainingTickets}
 							ticketQuantity={ticketQuantity}
 							setTicketQuantity={setTicketQuantity}
 						/>
-						{remainingTickets > 0 && (
-							<button
-								className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
-								onClick={handleReserve}
-								disabled={
-									isReserving || cookingClass.sold >= cookingClass.capacity
-								}
-							>
-								{isReserving ? "Checking out..." : "Checkout"}
-							</button>
-						)}
+						<button
+							className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
+							onClick={handleReserve}
+							disabled={
+								isReserving || cookingClass.sold >= cookingClass.capacity
+							}
+						>
+							{isReserving ? "Checking out..." : "Checkout"}
+						</button>
 					</div>
 				</div>
 				<div className="py-10"></div>
