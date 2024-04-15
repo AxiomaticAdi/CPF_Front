@@ -107,7 +107,9 @@ const CheckoutPage: React.FC = () => {
 			<h1 className="text-4xl font-bold">Checkout</h1>
 			<div className="my-2">
 				<p>Requested tickets: {ticketQuantityNum}</p>
-				<p>Total price: ${ticketQuantityNum * cookingClass.price}</p>
+				<p className="font-bold text-green-600">
+					Total price: ${ticketQuantityNum * cookingClass.price}
+				</p>
 			</div>
 
 			<div className="flex flex-wrap gap-4 my-6 justify-center">
