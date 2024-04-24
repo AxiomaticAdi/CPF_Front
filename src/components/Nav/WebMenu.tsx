@@ -28,7 +28,7 @@ export default function WebMenu({ links }: WebMenuProps) {
 					</NavLink>
 				))}
 
-				<Link className="mx-auto" to={"/"}>
+				<Link className="mx-auto flex-none" to={"/"}>
 					<img
 						src={"cpf_logo.webp"}
 						alt="Castle Peak Farms Logo"

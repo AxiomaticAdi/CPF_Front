@@ -16,7 +16,15 @@ interface CheckoutFormProps {
 }
 
 const schema = z.object({
-	name: z.string().min(1, "Name is required"),
+	name: z
+		.string()
+		.min(1, "Name is required")
+		.refine(
+			(value) => value.trim().length > 0 && !/^[\s\p{P}]*$/u.test(value),
+			{
+				message: "Name must contain more than just spaces or punctuation.",
+			}
+		),
 	email: z.string().email("Invalid email address"),
 });
 
