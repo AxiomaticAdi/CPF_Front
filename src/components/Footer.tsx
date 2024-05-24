@@ -4,10 +4,14 @@ export default function Footer() {
 	return (
 		<footer className="w-full pb-4 pt-24 flex justify-between text-xs sm:text-sm text-gray-400 items-center">
 			<div className="text-left">
-				<p>Copyright © 2024. All rights reserved.</p>
+				<p className="flex flex-wrap">
+					<span className="mr-1">
+						Copyright © 2024 Aditya Rudra Web Designs.
+					</span>
+					<span>All rights reserved</span>
+				</p>
 			</div>
 			<div className="flex justify-end flex-wrap gap-2 items-center text-right">
-				<p>Connect with us!</p>
 				<div className="flex gap-2">
 					<Link to={"https://www.facebook.com/profile.php?id=100094433604365"}>
 						<img
