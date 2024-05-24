@@ -7,7 +7,7 @@ export default function AboutPage() {
 			<div className="flex flex-col gap-12">
 				{" "}
 				<div className="flex flex-col items-center justify-center w-full gap-8">
-					<h1 className="text-xl font-bold text-center">Our Chef</h1>
+					<h1 className="text-xl font-bold text-center">Chef</h1>
 					<img src="/chef-mark.jpg" className="max-w-96 rounded-md" />
 					<div className="flex flex-col gap-2 text-left">
 						<p>
@@ -48,7 +48,7 @@ export default function AboutPage() {
 					</div>
 				</div>
 				<div className="flex flex-col items-center justify-center w-full gap-8">
-					<h1 className="text-xl font-bold text-center">Our Chief</h1>
+					<h1 className="text-xl font-bold text-center">Chief</h1>
 					<img src="/chief-doreen.jpg" className="max-w-96 rounded-md" />
 					<div className="flex flex-col gap-2 text-left">
 						<p>

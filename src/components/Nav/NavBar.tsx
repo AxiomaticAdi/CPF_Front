@@ -17,8 +17,8 @@ export default function Navbar() {
 			path: "/calendar",
 		},
 		{
-			text: "Classes",
-			path: "/classes",
+			text: "Events",
+			path: "/events",
 		},
 		{
 			text: "About",

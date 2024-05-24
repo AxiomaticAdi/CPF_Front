@@ -1,13 +1,13 @@
 import db from "../config/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
-import { CookingClass } from "../types";
+import { Event } from "../types";
 
-export async function fetchCookingClasses(): Promise<CookingClass[]> {
-	const classesCollection = collection(db, "Classes");
+export async function fetchEvents(): Promise<Event[]> {
+	const eventsCollection = collection(db, "Events");
 
 	try {
-		const snapshot = await getDocs(classesCollection);
-		const classes: CookingClass[] = [];
+		const snapshot = await getDocs(eventsCollection);
+		const events: Event[] = [];
 
 		snapshot.forEach((doc) => {
 			const data = doc.data();
@@ -16,7 +16,7 @@ export async function fetchCookingClasses(): Promise<CookingClass[]> {
 			const startTime = data.StartDateTime.toDate();
 			const endTime = data.EndDateTime.toDate();
 
-			const classItem: CookingClass = {
+			const eventItem: Event = {
 				id: doc.id,
 				name: data.Name,
 				description: data.Description,
@@ -27,12 +27,12 @@ export async function fetchCookingClasses(): Promise<CookingClass[]> {
 				sold: data.Sold,
 				price: data.Price,
 			};
-			classes.push(classItem);
+			events.push(eventItem);
 		});
 
-		return classes;
+		return events;
 	} catch (error) {
-		console.error("Error fetching cooking classes:", error);
+		console.error("Error fetching events:", error);
 		throw error; // rethrow the error after logging, or handle it as needed
 	}
 }

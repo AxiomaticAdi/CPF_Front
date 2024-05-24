@@ -1,20 +1,14 @@
 import { useContext } from "react";
-import ClassCard from "./components/ClassCard";
+import EventCard from "./components/EventCard";
 import Hero from "./components/Hero";
 import Page from "./components/Page";
-import ClassesContext from "./contexts/ClassesContext";
+import EventsContext from "./contexts/EventsContext";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Testimonials from "./components/Testimonials";
 import NavButton from "./components/NavButton";
 
-const bestSellers = [
-	"jIr3H0xFlkggDefGrYQi",
-	"k6pfJPNuLYasSm2A3pb9",
-	"DrPPFQ2SYr4h2Y3KhPf1",
-];
-
 function App() {
-	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+	const { events: Events, isLoading } = useContext(EventsContext);
 
 	if (isLoading) {
 		return (
@@ -30,21 +24,14 @@ function App() {
 				<Hero />
 				<div className="flex flex-col gap-4">
 					<div>
-						<h1 className="text-4xl font-bold my-8">Bestsellers</h1>
+						<h1 className="text-4xl font-bold my-8">Upcoming!</h1>
 						<div className="flex flex-wrap gap-8 items-center justify-center mx-auto">
-							{cookingClasses.map((cookingClass) => {
-								if (bestSellers.includes(cookingClass.id)) {
-									return (
-										<ClassCard
-											key={cookingClass.id}
-											cookingClass={cookingClass}
-										/>
-									);
-								} else return null;
-							})}
+							{Events.map((event) => (
+								<EventCard key={event.id} event={event} />
+							))}
 						</div>
 						<div className="pt-6">
-							<NavButton buttonText="More classes!" navigateTo="/classes" />
+							<NavButton buttonText="More events!" navigateTo="/events" />
 						</div>
 					</div>
 					<div className="pt-4">

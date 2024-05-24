@@ -3,20 +3,20 @@ import { useParams } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-import ClassesContext from "../contexts/ClassesContext";
+import EventsContext from "../contexts/EventsContext";
 import Page from "../components/Page";
-import { CookingClass } from "../types";
+import { Event } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
-import ClassDetailsSection from "../components/ClassDetailsSection";
+import EventDetailsSection from "../components/EventDetailsSection";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const CheckoutPage: React.FC = () => {
-	const { classId, ticketQuantity } = useParams<{
-		classId: string;
+	const { eventId, ticketQuantity } = useParams<{
+		eventId: string;
 		ticketQuantity: string;
 	}>();
-	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+	const { events: events, isLoading } = useContext(EventsContext);
 	const [clientSecret, setClientSecret] = useState<string | null>(null);
 
 	const ticketQuantityNum = parseInt(ticketQuantity || "0");
@@ -30,17 +30,17 @@ const CheckoutPage: React.FC = () => {
 					headers: {
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({ classId, numTickets: ticketQuantityNum }),
+					body: JSON.stringify({ eventId, numTickets: ticketQuantityNum }),
 				}
 			);
 			const data = await response.json();
 			setClientSecret(data.clientSecret);
 		};
 
-		if (classId && ticketQuantityNum > 0) {
+		if (eventId && ticketQuantityNum > 0) {
 			fetchPaymentIntent();
 		}
-	}, [classId, ticketQuantityNum]);
+	}, [eventId, ticketQuantityNum]);
 
 	if (isLoading) {
 		return (
@@ -50,7 +50,7 @@ const CheckoutPage: React.FC = () => {
 		);
 	}
 
-	if (!classId || isNaN(ticketQuantityNum) || ticketQuantityNum < 1) {
+	if (!eventId || isNaN(ticketQuantityNum) || ticketQuantityNum < 1) {
 		return (
 			<Page>
 				<p>Error: Invalid URL parameters</p>
@@ -58,19 +58,17 @@ const CheckoutPage: React.FC = () => {
 		);
 	}
 
-	const cookingClass: CookingClass | undefined = cookingClasses.find(
-		(c) => c.id === classId
-	);
+	const event: Event | undefined = events.find((e: Event) => e.id === eventId);
 
-	// Verify that the class ID and ticket quantity are valid
-	if (!cookingClass) {
+	// Verify that the event ID and ticket quantity are valid
+	if (!event) {
 		return (
 			<Page>
-				<p>Error: Class not found</p>
+				<p>Error: Event not found</p>
 			</Page>
 		);
 	}
-	const remainingTickets = cookingClass.capacity - cookingClass.sold;
+	const remainingTickets = event.capacity - event.sold;
 	if (ticketQuantityNum < 1) {
 		return (
 			<Page>
@@ -83,9 +81,8 @@ const CheckoutPage: React.FC = () => {
 			<Page>
 				<div className="flex flex-col gap-4 mx-4">
 					<p>
-						We're sorry! There aren't enough tickets available for{" "}
-						{cookingClass.name} on{" "}
-						{new Date(cookingClass.startTime).toLocaleDateString("en-US", {})}
+						We're sorry! There aren't enough tickets available for {event.name}{" "}
+						on {new Date(event.startTime).toLocaleDateString("en-US", {})}
 					</p>
 					<p>Quantity requested: {ticketQuantityNum}</p>
 					<p>Remaining tickets: {remainingTickets}</p>
@@ -108,7 +105,7 @@ const CheckoutPage: React.FC = () => {
 			<div className="my-2">
 				<p>Requested tickets: {ticketQuantityNum}</p>
 				<p className="font-bold text-green-600">
-					Total price: ${ticketQuantityNum * cookingClass.price}
+					Total price: ${ticketQuantityNum * event.price}
 				</p>
 			</div>
 
@@ -116,14 +113,14 @@ const CheckoutPage: React.FC = () => {
 				<div className="flex flex-col gap-4 mx-4 md:w-96">
 					<Elements stripe={stripePromise} options={{ clientSecret }}>
 						<CheckoutForm
-							classId={classId}
+							eventId={eventId}
 							ticketQuantity={ticketQuantityNum}
 						/>
 					</Elements>
 				</div>
 
 				<div className="flex flex-col gap-4 mx-4 md:w-96">
-					<ClassDetailsSection class={cookingClass} />
+					<EventDetailsSection event={event} />
 				</div>
 			</div>
 		</Page>

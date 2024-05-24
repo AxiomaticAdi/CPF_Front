@@ -2,7 +2,7 @@ const testimonials = [
 	[
 		[
 			{
-				body: "Attending a farm-to-table cooking class was an unforgettable date experience! Amazing, fresh, vibrant and delicious food that had our last restaurant experience completely beat. Highly recommended!",
+				body: "Attending a farm-to-table dinner event was an unforgettable date experience! Amazing, fresh, vibrant and delicious food that had our last restaurant experience completely beat. Highly recommended!",
 				author: {
 					name: "Leslie Alexander",
 					handle: "lesliealexander",

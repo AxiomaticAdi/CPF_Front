@@ -7,11 +7,11 @@ import {
 } from "@stripe/react-stripe-js";
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import ReservationInfoForm from "./ReservationInfoForm";
-import { verifyClassAvailability } from "../services/verifyAvailabilityService";
+import { verifyEventAvailability } from "../services/verifyAvailabilityService";
 import { useNavigate } from "react-router-dom";
 
 interface CheckoutFormProps {
-	classId: string;
+	eventId: string;
 	ticketQuantity: number;
 }
 
@@ -29,7 +29,7 @@ const schema = z.object({
 });
 
 export default function CheckoutForm({
-	classId,
+	eventId,
 	ticketQuantity,
 }: CheckoutFormProps) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -68,10 +68,10 @@ export default function CheckoutForm({
 
 		setErrors({}); // Clear errors on successful validation
 
-		// Verify class availability
-		if (!(await verifyClassAvailability(classId, ticketQuantity.toString()))) {
+		// Verify event availability
+		if (!(await verifyEventAvailability(eventId, ticketQuantity.toString()))) {
 			alert(
-				"Sorry, there is an issue with class availability. Please refresh the page."
+				"Sorry, there is an issue with event availability. Please refresh the page."
 			);
 			setIsLoading(false);
 			return;
