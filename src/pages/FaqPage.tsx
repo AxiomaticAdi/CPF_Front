@@ -8,12 +8,12 @@ export default function FaqPage() {
 			<div className="flex flex-col gap-6 text-center items-center">
 				<div>
 					<h2 className="text-xl font-semibold">
-						Will there be alcoholic drinks served during my class?
+						Will there be alcoholic drinks served during my event?
 					</h2>
 					<p className="max-w-xl">
 						We offer a rotating selection of wines by the glass and bottle, as
 						well as craft beers. Your first drink is on us! Additional beverages
-						can be purchased during your class.
+						can be purchased during your event.
 					</p>
 				</div>
 				<div>

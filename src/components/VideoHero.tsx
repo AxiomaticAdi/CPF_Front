@@ -19,7 +19,7 @@ const VideoHero: React.FC<VideoHeroProps> = ({ videoSource }) => {
 			</video>
 			<div className="absolute z-10 inset-0 flex flex-col items-center justify-center">
 				<h1 className="text-4xl font-bold text-black mb-8">
-					Reserve your class
+					Reserve your seat
 				</h1>
 				<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
 					Book now

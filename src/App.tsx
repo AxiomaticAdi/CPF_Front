@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import ClassCard from "./components/ClassCard";
+import EventCard from "./components/EventCard";
 import Hero from "./components/Hero";
 import Page from "./components/Page";
-import ClassesContext from "./contexts/ClassesContext";
+import EventsContext from "./contexts/EventsContext";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Testimonials from "./components/Testimonials";
 import NavButton from "./components/NavButton";
@@ -14,7 +14,7 @@ const bestSellers = [
 ];
 
 function App() {
-	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+	const { events: Events, isLoading } = useContext(EventsContext);
 
 	if (isLoading) {
 		return (
@@ -32,19 +32,14 @@ function App() {
 					<div>
 						<h1 className="text-4xl font-bold my-8">Bestsellers</h1>
 						<div className="flex flex-wrap gap-8 items-center justify-center mx-auto">
-							{cookingClasses.map((cookingClass) => {
-								if (bestSellers.includes(cookingClass.id)) {
-									return (
-										<ClassCard
-											key={cookingClass.id}
-											cookingClass={cookingClass}
-										/>
-									);
+							{Events.map((event) => {
+								if (bestSellers.includes(event.id)) {
+									return <EventCard key={event.id} event={event} />;
 								} else return null;
 							})}
 						</div>
 						<div className="pt-6">
-							<NavButton buttonText="More classes!" navigateTo="/classes" />
+							<NavButton buttonText="More events!" navigateTo="/events" />
 						</div>
 					</div>
 					<div className="pt-4">

@@ -24,9 +24,9 @@ export default function Hero() {
 			{/* Content container to ensure it sits above the overlay and image */}
 			<div className="relative z-10 text-center">
 				<h1 className="text-4xl font-bold text-white drop-shadow-md mb-8">
-					Farm Fresh Cooking Classes
+					Farm Fresh Cooking Classes & Dinner Events
 				</h1>
-				<NavButton buttonText="Book now" navigateTo="/classes" />
+				<NavButton buttonText="Book now" navigateTo="/events" />
 			</div>
 		</div>
 	);

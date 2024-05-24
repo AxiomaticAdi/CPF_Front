@@ -8,13 +8,13 @@ import ErrorPage from "./pages/ErrorPage.tsx";
 import CalendarPage from "./pages/CalendarPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import FaqPage from "./pages/FaqPage.tsx";
-import ClassesProvider from "./contexts/ClassesProvider.tsx";
-import ClassDetailsPage from "./pages/ClassDetailsPage.tsx";
-import ClassesPage from "./pages/ClassesPage.tsx";
+import EventsProvider from "./contexts/EventsProvider.tsx";
+import EventsPage from "./pages/EventsPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPostDetailsPage from "./pages/BlogPostDetailsPage.tsx";
 import CheckoutPage from "./pages/CheckoutPage.tsx";
 import OrderSuccessPage from "./pages/OrderSuccessPage.tsx";
+import EventDetailsPage from "./pages/EventDetailsPage.tsx";
 
 const router = createHashRouter([
 	{
@@ -38,13 +38,13 @@ const router = createHashRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/classes",
-		element: <ClassesPage />,
+		path: "/events",
+		element: <EventsPage />,
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/classes/:classId",
-		element: <ClassDetailsPage />,
+		path: "/events/:eventId",
+		element: <EventDetailsPage />,
 		errorElement: <ErrorPage />,
 	},
 	{
@@ -58,7 +58,7 @@ const router = createHashRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/checkout/:classId/:ticketQuantity",
+		path: "/checkout/:eventId/:ticketQuantity",
 		element: <CheckoutPage />,
 		errorElement: <ErrorPage />,
 	},
@@ -71,8 +71,8 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<ClassesProvider>
+		<EventsProvider>
 			<RouterProvider router={router} />
-		</ClassesProvider>
+		</EventsProvider>
 	</React.StrictMode>
 );

@@ -1,24 +1,24 @@
 import React, { ReactNode, useState, useEffect } from "react";
-import ClassesContext from "./ClassesContext";
-import { CookingClass } from "../types";
+import EventsContext from "./EventsContext";
+import { Event } from "../types";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import db from "../config/firebase-config";
 
-interface ClassesProviderProps {
+interface EventsProviderProps {
 	children: ReactNode;
 }
 
-const ClassesProvider: React.FC<ClassesProviderProps> = ({ children }) => {
-	const [cookingClasses, setCookingClasses] = useState<CookingClass[]>([]);
+const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
+	const [events, setEvents] = useState<Event[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		setIsLoading(true);
-		const q = query(collection(db, "Classes"));
+		const q = query(collection(db, "Events"));
 		const unsubscribe = onSnapshot(
 			q,
 			(querySnapshot) => {
-				const classes: CookingClass[] = querySnapshot.docs.map((doc) => {
+				const events: Event[] = querySnapshot.docs.map((doc) => {
 					const data = doc.data();
 					return {
 						id: doc.id,
@@ -30,13 +30,13 @@ const ClassesProvider: React.FC<ClassesProviderProps> = ({ children }) => {
 						capacity: data.Capacity,
 						sold: data.Sold,
 						price: data.Price,
-					} as CookingClass;
+					} as Event;
 				});
-				setCookingClasses(classes);
+				setEvents(events);
 				setIsLoading(false);
 			},
 			(error) => {
-				console.error("Error fetching cooking classes:", error);
+				console.error("Error fetching events:", error);
 				setIsLoading(false); // Optionally handle error state
 			}
 		);
@@ -46,10 +46,10 @@ const ClassesProvider: React.FC<ClassesProviderProps> = ({ children }) => {
 	}, []);
 
 	return (
-		<ClassesContext.Provider value={{ classes: cookingClasses, isLoading }}>
+		<EventsContext.Provider value={{ events: events, isLoading }}>
 			{children}
-		</ClassesContext.Provider>
+		</EventsContext.Provider>
 	);
 };
 
-export default ClassesProvider;
+export default EventsProvider;

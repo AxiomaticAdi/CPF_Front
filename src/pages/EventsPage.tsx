@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import ClassCard from "../components/ClassCard";
+import EventCard from "../components/EventCard";
 import Page from "../components/Page";
-import ClassesContext from "../contexts/ClassesContext";
+import EventsContext from "../contexts/EventsContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-export default function ClassesPage() {
-	const { classes: cookingClasses, isLoading } = useContext(ClassesContext);
+export default function EventsPage() {
+	const { events: events, isLoading } = useContext(EventsContext);
 
 	return (
 		<Page>
@@ -15,9 +15,7 @@ export default function ClassesPage() {
 					{isLoading ? (
 						<LoadingSpinner />
 					) : (
-						cookingClasses.map((cookingClass) => (
-							<ClassCard key={cookingClass.id} cookingClass={cookingClass} />
-						))
+						events.map((event) => <EventCard key={event.id} event={event} />)
 					)}
 				</div>
 			</div>
