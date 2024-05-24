@@ -24,14 +24,14 @@ function App() {
 				<Hero />
 				<div className="flex flex-col gap-4">
 					<div>
-						<h1 className="text-4xl font-bold my-8">Upcoming!</h1>
+						<h1 className="text-4xl font-bold my-8">Upcoming</h1>
 						<div className="flex flex-wrap gap-8 items-center justify-center mx-auto">
 							{Events.map((event) => (
 								<EventCard key={event.id} event={event} />
 							))}
 						</div>
 						<div className="pt-6">
-							<NavButton buttonText="More events!" navigateTo="/events" />
+							<NavButton buttonText="All events" navigateTo="/events" />
 						</div>
 					</div>
 					<div className="pt-4">
