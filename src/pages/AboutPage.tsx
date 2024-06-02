@@ -5,7 +5,6 @@ export default function AboutPage() {
 		<Page>
 			<h1 className="text-4xl font-bold mb-6">About</h1>
 			<div className="flex flex-col gap-12">
-				{" "}
 				<div className="flex flex-col items-center justify-center w-full gap-8">
 					<h1 className="text-xl font-bold text-center">Chef</h1>
 					<img src="/chef-mark.jpg" className="max-w-96 rounded-md" />
