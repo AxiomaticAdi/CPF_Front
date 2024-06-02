@@ -16,13 +16,6 @@ export default function FaqPage() {
 						can be purchased during your event.
 					</p>
 				</div>
-				<div>
-					<h2 className="text-xl font-semibold">Are tickets refundable?</h2>
-					<p className="max-w-xl">
-						Tickets are non-refundable. However, if you can’t make the dinner,
-						you are welcome to give or resell your tickets to someone else.
-					</p>
-				</div>
 			</div>
 		</Page>
 	);
