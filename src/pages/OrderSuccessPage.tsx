@@ -13,6 +13,14 @@ export default function OrderSuccessPage() {
 					email. We are excited to get cooking with you soon!
 				</p>
 				<p>
+					If you have any questions or need further assistance, please reach out
+					to us at:{" "}
+					<span className="text-blue-500 underline cursor-pointer">
+						{" "}
+						dvalentinecpf@gmail.com
+					</span>{" "}
+				</p>
+				<p>
 					<span className="font-bold text-red-500">Temporary note:</span> Stripe
 					is currently in testing mode and therefore does not send emails
 				</p>
