@@ -16,6 +16,8 @@ import CheckoutPage from "./pages/CheckoutPage.tsx";
 import OrderSuccessPage from "./pages/OrderSuccessPage.tsx";
 import EventDetailsPage from "./pages/EventDetailsPage.tsx";
 import PrivacyPolicyRedirect from "./pages/legal/PrivacyPolicyRedirect.tsx";
+import LegalPage from "./pages/legal/LegalPage.tsx";
+import TermsOfUseRedirect from "./pages/legal/TermsRedirect.tsx";
 
 const router = createHashRouter([
 	{
@@ -69,8 +71,18 @@ const router = createHashRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
+		path: "/legal",
+		element: <LegalPage />,
+		errorElement: <ErrorPage />,
+	},
+	{
 		path: "/legal/privacy",
 		element: <PrivacyPolicyRedirect />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/legal/terms",
+		element: <TermsOfUseRedirect />,
 		errorElement: <ErrorPage />,
 	},
 ]);
