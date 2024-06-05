@@ -2,19 +2,17 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
 	return (
-		<footer className="w-full pb-4 pt-24 flex flex-col">
-			<div className="text-xs text-left sm:text-sm text-gray-400">
-				15775 Castle Peak Lane, Jamul, CA 91935
-			</div>
-			<div className="w-full flex justify-between text-xs sm:text-sm text-gray-400 items-center">
-				<div className="text-left">
-					<p className="flex flex-wrap">
-						<span className="mr-1">
-							Copyright © 2024 Aditya Rudra Web Designs.
-						</span>
-						<span>All rights reserved</span>
-					</p>
+		<footer className="w-full pb-4 pt-24 flex flex-col text-gray-400">
+			<div className="flex justify-between">
+				<div className="flex flex-col text-left">
+					<div className="text-xs sm:text-sm">
+						15775 Castle Peak Lane, Jamul, CA 91935
+					</div>
+					<Link to={"/legal"} className="text-xs sm:text-sm text-blue-400">
+						Legal Notices
+					</Link>
 				</div>
+
 				<div className="flex justify-end flex-wrap gap-2 items-center text-right">
 					<div className="flex gap-2">
 						<Link
@@ -35,6 +33,13 @@ export default function Footer() {
 						</Link>
 					</div>
 				</div>
+			</div>
+
+			<div className="w-full flex justify-center text-xs text-gray-400 font-light items-center mt-4 italic">
+				<p className="flex flex-wrap justify-center">
+					<span className="mr-1">© 2024 Aditya Rudra Web Designs.</span>
+					<span>All rights reserved</span>
+				</p>
 			</div>
 		</footer>
 	);
