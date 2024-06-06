@@ -20,10 +20,6 @@ export default function OrderSuccessPage() {
 						dvalentinecpf@gmail.com
 					</span>{" "}
 				</p>
-				<p>
-					<span className="font-bold text-red-500">Temporary note:</span> Stripe
-					is currently in testing mode and therefore does not send emails
-				</p>
 			</div>
 		</Page>
 	);
