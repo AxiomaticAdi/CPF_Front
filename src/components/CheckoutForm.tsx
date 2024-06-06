@@ -99,6 +99,7 @@ export default function CheckoutForm({
 		if (paymentResult.error) {
 			// Show error to your customer (e.g., payment details incomplete)
 			console.error(paymentResult.error.message);
+			alert(paymentResult.error.message);
 		} else {
 			// If payment succeeded redirect to success page
 			if (paymentResult.paymentIntent.status === "succeeded") {
