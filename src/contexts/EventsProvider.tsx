@@ -18,7 +18,7 @@ const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
 		const unsubscribe = onSnapshot(
 			q,
 			(querySnapshot) => {
-				const events: Event[] = querySnapshot.docs.map((doc) => {
+				let events: Event[] = querySnapshot.docs.map((doc) => {
 					const data = doc.data();
 					return {
 						id: doc.id,
@@ -32,6 +32,14 @@ const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
 						price: data.Price,
 					} as Event;
 				});
+
+				// Filter out events that have already passed
+				events = events.filter((event) => {
+					const now = new Date();
+					return now < event.endTime;
+				});
+
+				// Assign filtered events to state
 				setEvents(events);
 				setIsLoading(false);
 			},
