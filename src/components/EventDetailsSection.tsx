@@ -1,5 +1,4 @@
-import React from "react";
-import DOMPurify from "dompurify"; // Import DOMPurify
+import DOMPurify from "dompurify";
 import { Event } from "../types";
 import BadgePrice from "./Badges/BadgePrice";
 
