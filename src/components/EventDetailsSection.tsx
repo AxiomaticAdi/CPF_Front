@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { Event } from "../types";
 import BadgePrice from "./Badges/BadgePrice";
 
@@ -9,6 +10,10 @@ export default function EventDetailsSection({
 	event: event,
 }: EventDetailsSectionProps) {
 	const remainingTickets = event.capacity - event.sold;
+
+	// Sanitize the HTML content before rendering
+	const sanitizedDescription = DOMPurify.sanitize(event.description);
+
 	return (
 		<div className="flex flex-col items-center">
 			<div className="w-80 sm:w-96 h-60 rounded-md relative">
@@ -21,7 +26,11 @@ export default function EventDetailsSection({
 			</div>
 
 			<h1 className="text-xl font-bold my-4">{event.name}</h1>
-			<p className="text-gray-600 max-w-96 mb-4">{event.description}</p>
+			{/* Render sanitized HTML */}
+			<div
+				className="text-gray-600 max-w-96 mb-4 prose text-left"
+				dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+			></div>
 			<div className="mt-2 font-semibold">
 				<div>
 					{new Date(event.startTime).toLocaleDateString("en-US", {
