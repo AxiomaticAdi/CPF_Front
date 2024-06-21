@@ -120,7 +120,7 @@ const CheckoutPage: React.FC = () => {
 				</div>
 
 				<div className="flex flex-col gap-4 mx-4 md:w-96">
-					<EventDetailsSection event={event} />
+					<EventDetailsSection event={event} includeDetails={false} />
 				</div>
 			</div>
 		</Page>
