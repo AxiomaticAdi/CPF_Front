@@ -21,7 +21,9 @@ export default function EventCard({ event }: EventCardProps) {
 				{/* Gradient Overlay */}
 				<div className="absolute bottom-0 w-full h-1/5 bg-gradient-to-t from-black to-transparent">
 					<div className="flex h-full justify-center items-end py-4">
-						<h1 className="text-xl font-bold text-white">{event.name}</h1>
+						<h1 className="text-xl font-bold text-white text-balance">
+							{event.name}
+						</h1>
 					</div>
 				</div>
 			</div>
