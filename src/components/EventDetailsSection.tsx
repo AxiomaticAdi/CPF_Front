@@ -4,10 +4,12 @@ import BadgePrice from "./Badges/BadgePrice";
 
 interface EventDetailsSectionProps {
 	event: Event;
+	includeDetails?: boolean;
 }
 
 export default function EventDetailsSection({
 	event: event,
+	includeDetails = true,
 }: EventDetailsSectionProps) {
 	const remainingTickets = event.capacity - event.sold;
 
@@ -26,11 +28,15 @@ export default function EventDetailsSection({
 			</div>
 
 			<h1 className="text-xl font-bold my-4">{event.name}</h1>
-			{/* Render sanitized HTML */}
-			<div
-				className="text-gray-600 max-w-96 mb-4 prose text-left"
-				dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
-			></div>
+
+			{/* Optionally include event description as sanitized HTML */}
+			{includeDetails && (
+				<div
+					className="max-w-96 mb-4 prose text-left"
+					dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+				></div>
+			)}
+
 			<div className="mt-2 font-semibold">
 				<div>
 					{new Date(event.startTime).toLocaleDateString("en-US", {
