@@ -9,6 +9,7 @@ import {
 	orderBy,
 } from "firebase/firestore";
 import db from "../config/firebase-config";
+import { hideUnsoldEvents } from "../helpers/eventFilters";
 
 interface EventsProviderProps {
 	children: ReactNode;
@@ -47,7 +48,10 @@ const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
 					} as Event;
 				});
 
-				setEvents(events);
+				// Hide events that are unsold within 48 hours of the start time
+				const filteredEvents = hideUnsoldEvents(events);
+
+				setEvents(filteredEvents);
 				setIsLoading(false);
 			},
 			(error) => {
