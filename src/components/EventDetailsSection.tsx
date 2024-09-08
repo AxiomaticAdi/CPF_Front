@@ -40,6 +40,7 @@ export default function EventDetailsSection({
 			<div className="mt-2 font-semibold">
 				<div>
 					{new Date(event.startTime).toLocaleDateString("en-US", {
+						timeZone: "America/Los_Angeles",
 						month: "long",
 						day: "numeric",
 						year: "numeric",
@@ -47,6 +48,7 @@ export default function EventDetailsSection({
 				</div>
 				<div>
 					{new Date(event.startTime).toLocaleTimeString("en-US", {
+						timeZone: "America/Los_Angeles",
 						hour: "numeric",
 						minute: "2-digit",
 						hour12: true,
@@ -54,11 +56,13 @@ export default function EventDetailsSection({
 					})}{" "}
 					to{" "}
 					{new Date(event.endTime).toLocaleTimeString("en-US", {
+						timeZone: "America/Los_Angeles",
 						hour: "numeric",
 						minute: "2-digit",
 						hour12: true,
 						hourCycle: "h11",
-					})}
+					})}{" "}
+					PT
 				</div>
 			</div>
 			<p>{remainingTickets} remaining tickets</p>
