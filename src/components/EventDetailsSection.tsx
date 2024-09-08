@@ -61,7 +61,8 @@ export default function EventDetailsSection({
 						minute: "2-digit",
 						hour12: true,
 						hourCycle: "h11",
-					})}
+					})}{" "}
+					PT
 				</div>
 			</div>
 			<p>{remainingTickets} remaining tickets</p>
