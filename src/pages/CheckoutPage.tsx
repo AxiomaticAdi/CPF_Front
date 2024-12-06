@@ -99,13 +99,18 @@ const CheckoutPage: React.FC = () => {
 		);
 	}
 
+	const totalPrice = ticketQuantityNum * event.price;
+	const formattedTotalPrice = Number.isInteger(totalPrice)
+		? totalPrice
+		: totalPrice.toFixed(2);
+
 	return (
 		<Page>
 			<h1 className="text-4xl font-bold">Checkout</h1>
 			<div className="my-2">
 				<p className="font-bold">Requested tickets: {ticketQuantityNum}</p>
 				<p className="font-bold text-green-600">
-					Total price: ${ticketQuantityNum * event.price}
+					Total price: ${formattedTotalPrice}
 				</p>
 				<p>Includes all taxes and fees</p>
 			</div>
