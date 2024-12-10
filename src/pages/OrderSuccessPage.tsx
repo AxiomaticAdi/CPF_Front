@@ -1,7 +1,5 @@
 import Page from "../components/Page";
 
-// TODO: Remove temporary note when Stripe is in production mode
-
 export default function OrderSuccessPage() {
 	return (
 		<Page>
