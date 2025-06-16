@@ -8,6 +8,7 @@ export type Event = {
 	capacity: number;
 	sold: number;
 	price: number;
+	isDirectSaleOnly?: boolean;
 };
 
 export type BlogPost = {
