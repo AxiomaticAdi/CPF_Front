@@ -6,6 +6,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { Event } from "../types";
 import EventDetailsSection from "../components/EventDetailsSection";
 import TicketSelect from "../components/TicketSelect";
+import DirectSaleOnly from "../components/DirectSaleOnly";
 
 export default function EventDetailsPage() {
 	const { eventId } = useParams<{ eventId: string }>();
@@ -46,6 +47,8 @@ export default function EventDetailsPage() {
 	};
 
 	const remainingTickets = event.capacity - event.sold;
+	const isDirectSaleOnly: boolean = event.isDirectSaleOnly || false;
+	console.log("event: ", event);
 
 	if (remainingTickets <= 0) {
 		return (
@@ -65,23 +68,26 @@ export default function EventDetailsPage() {
 		<Page>
 			<div className="flex flex-col items-center">
 				<EventDetailsSection event={event} />
-				<div className="flex flex-col gap-2 my-8">
-					<h1 className="text-xl font-bold">Reserve now!</h1>
-					<div className="flex justify-center gap-6">
-						<TicketSelect
-							remainingTickets={remainingTickets}
-							ticketQuantity={ticketQuantity}
-							setTicketQuantity={setTicketQuantity}
-						/>
-						<button
-							className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
-							onClick={handleReserve}
-							disabled={isReserving || event.sold >= event.capacity}
-						>
-							{isReserving ? "Checking out..." : "Checkout"}
-						</button>
+				{isDirectSaleOnly && <DirectSaleOnly />}
+				{!isDirectSaleOnly && (
+					<div className="flex flex-col gap-2 my-8">
+						<h1 className="text-xl font-bold">Reserve now!</h1>
+						<div className="flex justify-center gap-6">
+							<TicketSelect
+								remainingTickets={remainingTickets}
+								ticketQuantity={ticketQuantity}
+								setTicketQuantity={setTicketQuantity}
+							/>
+							<button
+								className="w-32 bg-blue-500 shadow-md text-white rounded hover:bg-blue-700"
+								onClick={handleReserve}
+								disabled={isReserving || event.sold >= event.capacity}
+							>
+								{isReserving ? "Checking out..." : "Checkout"}
+							</button>
+						</div>
 					</div>
-				</div>
+				)}
 				<div className="py-10"></div>
 			</div>
 		</Page>

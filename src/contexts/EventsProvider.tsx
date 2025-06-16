@@ -45,6 +45,7 @@ const EventsProvider: React.FC<EventsProviderProps> = ({ children }) => {
 						capacity: data.Capacity,
 						sold: data.Sold,
 						price: data.Price,
+						isDirectSaleOnly: data.IsDirectSaleOnly || false,
 					} as Event;
 				});
 
