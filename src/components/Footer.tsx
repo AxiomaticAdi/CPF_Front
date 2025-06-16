@@ -15,22 +15,20 @@ export default function Footer() {
 
 				<div className="flex justify-end flex-wrap gap-2 items-center text-right">
 					<div className="flex gap-2">
-						<Link
-							to={"https://www.facebook.com/profile.php?id=100094433604365"}
-						>
+						<a href="https://www.facebook.com/profile.php?id=100094433604365" target="_blank" rel="noopener noreferrer">
 							<img
 								src="https://cdn.svgporn.com/logos/facebook.svg"
 								alt="Facebook logo"
 								className="h-6 w-6 filter grayscale"
 							/>
-						</Link>
-						<Link to={"https://www.instagram.com/castlepeakfarmsd/"}>
+						</a>
+						<a href="https://www.instagram.com/castlepeakfarmsd/" target="_blank" rel="noopener noreferrer">
 							<img
 								src="https://cdn.svgporn.com/logos/instagram-icon.svg"
 								alt="Instagram logo"
 								className="h-6 w-6 filter grayscale"
 							/>
-						</Link>
+						</a>
 					</div>
 				</div>
 			</div>
