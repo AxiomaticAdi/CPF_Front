@@ -70,14 +70,6 @@ const CheckoutPage: React.FC = () => {
 
   const remainingTickets = event.capacity - event.sold;
 
-  if (ticketQuantityNum < 1) {
-    return (
-      <Page>
-        <p>Error: Invalid ticket quantity provided</p>
-      </Page>
-    );
-  }
-
   if (remainingTickets <= 0 || ticketQuantityNum > remainingTickets) {
     return (
       <Page>
