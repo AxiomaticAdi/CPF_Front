@@ -8,6 +8,7 @@ export type Event = {
 	capacity: number;
 	sold: number;
 	price: number;
+	depositPrice?: number;
 	isDirectSaleOnly?: boolean;
 };
 
