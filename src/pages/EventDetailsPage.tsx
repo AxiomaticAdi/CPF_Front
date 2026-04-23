@@ -7,6 +7,7 @@ import { Event } from "../types";
 import EventDetailsSection from "../components/EventDetailsSection";
 import TicketSelect from "../components/TicketSelect";
 import DirectSaleOnly from "../components/DirectSaleOnly";
+import DepositPolicy from "../components/DepositPolicy";
 
 export default function EventDetailsPage() {
 	const { eventId } = useParams<{ eventId: string }>();
@@ -71,6 +72,11 @@ export default function EventDetailsPage() {
 				{isDirectSaleOnly && <DirectSaleOnly />}
 				{!isDirectSaleOnly && (
 					<div className="flex flex-col gap-2 my-8">
+						{event.depositPrice && (
+							<div className="mb-4 max-w-lg">
+								<DepositPolicy depositPrice={event.depositPrice} />
+							</div>
+						)}
 						<h1 className="text-xl font-bold">Reserve now!</h1>
 						<div className="flex justify-center gap-6">
 							<TicketSelect
