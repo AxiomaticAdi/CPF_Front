@@ -27,7 +27,7 @@ export default function EventDetailsSection({
           alt={event.name}
           className="w-full h-full rounded-md object-cover"
         />
-        <BadgePrice price={event.price} depositPrice={event.depositPrice} />
+        <BadgePrice price={event.price} />
       </div>
 
       <h1 className="text-xl font-bold my-4">{event.name}</h1>

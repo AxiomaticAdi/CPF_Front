@@ -4,11 +4,12 @@ type Props = {
 
 export default function DepositPolicy({ depositPrice }: Props) {
 	return (
-		<div className="rounded-2xl border border-field-green/20 bg-cloud-white px-6 py-5 shadow-sm">
-			<h3 className="mb-1 font-serif text-xl font-semibold text-field-green">
+		<div className="rounded-2xl border border-field-green/20 bg-cloud-white px-6 py-6 text-left shadow-sm">
+			<h3 className="mb-3 text-center font-serif text-xl font-semibold text-field-green">
 				Saving Your Seat at the Table
 			</h3>
-			<p className="mb-4 text-mountain-stone">
+
+			<p className="mb-5 text-sm leading-relaxed text-mountain-stone">
 				To join us for dinner, we ask for a{" "}
 				<span className="font-semibold text-rich-black">
 					${depositPrice} deposit per guest
@@ -17,23 +18,27 @@ export default function DepositPolicy({ depositPrice }: Props) {
 				simply relax and enjoy your evening on the farm.
 			</p>
 
-			<p className="mb-2 text-sm font-medium uppercase tracking-wide text-field-green">
-				Life happens — we understand plans can change:
+			<p className="mb-3 text-center text-xs font-semibold uppercase tracking-wider text-field-green">
+				Life happens — we understand plans can change
 			</p>
 
-			<ul className="space-y-2 text-sm text-mountain-stone">
-				<li className="flex gap-2">
-					<span className="mt-0.5 text-field-green">✓</span>
-					<span>
+			<ul className="space-y-2.5 text-sm leading-relaxed text-mountain-stone">
+				<li className="flex gap-3">
+					<span className="w-4 flex-none text-center font-semibold text-field-green">
+						✓
+					</span>
+					<span className="flex-1">
 						<span className="font-medium text-rich-black">
 							With 48 hours&rsquo; notice,
 						</span>{" "}
 						your deposit is happily refunded.
 					</span>
 				</li>
-				<li className="flex gap-2">
-					<span className="mt-0.5 text-golden-yellow">!</span>
-					<span>
+				<li className="flex gap-3">
+					<span className="w-4 flex-none text-center font-semibold text-golden-yellow">
+						!
+					</span>
+					<span className="flex-1">
 						<span className="font-medium text-rich-black">
 							Within 48 hours,
 						</span>{" "}
@@ -41,9 +46,11 @@ export default function DepositPolicy({ depositPrice }: Props) {
 						someone in your place — just email us their name ahead of time.
 					</span>
 				</li>
-				<li className="flex gap-2">
-					<span className="mt-0.5 text-barn-red">✕</span>
-					<span>
+				<li className="flex gap-3">
+					<span className="w-4 flex-none text-center font-semibold text-barn-red">
+						✕
+					</span>
+					<span className="flex-1">
 						<span className="font-medium text-rich-black">
 							If a reservation is missed without notice,
 						</span>{" "}
