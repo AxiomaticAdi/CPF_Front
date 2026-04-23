@@ -20,77 +20,77 @@ import LegalPage from "./pages/legal/LegalPage.tsx";
 import TermsOfUseRedirect from "./pages/legal/TermsRedirect.tsx";
 
 const router = createHashRouter([
-	{
-		path: "/",
-		element: <App />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/calendar",
-		element: <CalendarPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/about",
-		element: <AboutPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/faq",
-		element: <FaqPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/events",
-		element: <EventsPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/events/:eventId",
-		element: <EventDetailsPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/blog",
-		element: <BlogPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/blog/:postId",
-		element: <BlogPostDetailsPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/checkout/:eventId/:ticketQuantity",
-		element: <CheckoutPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/order-complete",
-		element: <OrderSuccessPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/legal",
-		element: <LegalPage />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/legal/privacy",
-		element: <PrivacyPolicyRedirect />,
-		errorElement: <ErrorPage />,
-	},
-	{
-		path: "/legal/terms",
-		element: <TermsOfUseRedirect />,
-		errorElement: <ErrorPage />,
-	},
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/calendar",
+    element: <CalendarPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/faq",
+    element: <FaqPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/events",
+    element: <EventsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/events/:eventId",
+    element: <EventDetailsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/blog",
+    element: <BlogPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/blog/:postId",
+    element: <BlogPostDetailsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/checkout/:eventId/:ticketQuantity",
+    element: <CheckoutPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/order-complete",
+    element: <OrderSuccessPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/legal",
+    element: <LegalPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/legal/privacy",
+    element: <PrivacyPolicyRedirect />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/legal/terms",
+    element: <TermsOfUseRedirect />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	<React.StrictMode>
-		<EventsProvider>
-			<RouterProvider router={router} />
-		</EventsProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <EventsProvider>
+      <RouterProvider router={router} />
+    </EventsProvider>
+  </React.StrictMode>,
 );

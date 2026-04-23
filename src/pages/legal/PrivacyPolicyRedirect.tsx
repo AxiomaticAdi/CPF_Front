@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 
 const PrivacyPolicyRedirect: React.FC = () => {
-	useEffect(() => {
-		window.location.href = `https://www.castlepeakfarmsd.com/privacy-policy.html`;
-	}, []);
+  useEffect(() => {
+    window.location.href = `https://www.castlepeakfarmsd.com/privacy-policy.html`;
+  }, []);
 
-	return null;
+  return null;
 };
 
 export default PrivacyPolicyRedirect;

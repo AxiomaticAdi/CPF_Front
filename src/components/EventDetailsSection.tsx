@@ -81,8 +81,8 @@ export default function EventDetailsSection({
             {fmt(remainingPerTicket)} per ticket
           </p>
           <p>
-            <span className="font-semibold">Full price:</span> ${fmt(event.price)}{" "}
-            per ticket
+            <span className="font-semibold">Full price:</span> $
+            {fmt(event.price)} per ticket
           </p>
         </div>
       )}

@@ -1,12 +1,12 @@
 import { BlogPost } from "./types";
 
 export const BlogPosts: BlogPost[] = [
-	{
-		id: "1",
-		postTitle: "Launching our Farm-To-Table Cooking Classes",
-		postDescription:
-			"As someone whose life has revolved around exploring and creating diverse cuisines, I'm thrilled to announce the opening of my new cooking classes on a beautiful farm in Jamul, California.",
-		postContent: `Hello, food enthusiasts! Chef Mark Pelliccia here, welcoming you to a new chapter in my culinary journey. As someone whose life has revolved around exploring and creating diverse cuisines, I'm thrilled to announce the opening of my new cooking classes on a beautiful farm in Jamul, California. This venture is more than just a class; it's an immersive experience that blends the art of cooking with the serenity and bounty of the farm.
+  {
+    id: "1",
+    postTitle: "Launching our Farm-To-Table Cooking Classes",
+    postDescription:
+      "As someone whose life has revolved around exploring and creating diverse cuisines, I'm thrilled to announce the opening of my new cooking classes on a beautiful farm in Jamul, California.",
+    postContent: `Hello, food enthusiasts! Chef Mark Pelliccia here, welcoming you to a new chapter in my culinary journey. As someone whose life has revolved around exploring and creating diverse cuisines, I'm thrilled to announce the opening of my new cooking classes on a beautiful farm in Jamul, California. This venture is more than just a class; it's an immersive experience that blends the art of cooking with the serenity and bounty of the farm.
 		
 		||Having journeyed through the flavors of the world, from the vibrant streets of Italy and the bustling markets of Japan to the rich culinary heritage of Mexico, my palate has been shaped by a mosaic of global cuisines. These experiences have taught me the importance of sourcing fresh, local ingredients—a philosophy that will be at the heart of our classes in Jamul.
 		
@@ -19,8 +19,8 @@ export const BlogPosts: BlogPost[] = [
 		||As we embark on this journey together, I'm excited to not only share my culinary knowledge but also to learn from the experiences and insights of our students. Cooking is a continuous journey of discovery, and I believe that every person has something unique to contribute to the kitchen.
 		
 		||Join me in Jamul, where we'll cultivate not just crops, but creativity, community, and a deeper appreciation for the culinary arts. Let's turn the simple act of cooking into an extraordinary experience, and together, create dishes that tell the story of our collective journey. Here's to new beginnings and the endless possibilities that await us in the world of gastronomy!`,
-		postImageUrl:
-			"https://www.compass.com/m/5c77b7726eb3149e519266346907d71a20f35b5e_img_0_b01e7/origin.jpg",
-		postDate: "April 2nd, 2024",
-	},
+    postImageUrl:
+      "https://www.compass.com/m/5c77b7726eb3149e519266346907d71a20f35b5e_img_0_b01e7/origin.jpg",
+    postDate: "April 2nd, 2024",
+  },
 ];

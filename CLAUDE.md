@@ -48,6 +48,7 @@ VITE_BACKEND_URL=         # Backend API base URL (e.g. https://api.example.com)
 **Data layer** — `EventsProvider` (`src/contexts/`) subscribes to Firestore (`Events` collection) via `onSnapshot`, filtering to only future events ordered by `EndDateTime`. Events are further filtered by `hideUnsoldEvents` (hides events with 0 sales within 48 hours of start). All pages that need events consume `EventsContext` via `useContext`.
 
 **Checkout flow** — Route `/checkout/:eventId/:ticketQuantity`:
+
 1. `CheckoutPage` fetches a Stripe payment intent from `VITE_BACKEND_URL/create-payment-intent`
 2. `CheckoutForm` validates name/email with Zod, calls `VITE_BACKEND_URL/verify-event-availability`, then confirms the Stripe payment
 3. On success, navigates to `/order-complete`

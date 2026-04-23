@@ -31,7 +31,7 @@ const CheckoutPage: React.FC = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ eventId, numTickets: ticketQuantityNum }),
-        }
+        },
       );
       const data = await response.json();
       setClientSecret(data.clientSecret);
