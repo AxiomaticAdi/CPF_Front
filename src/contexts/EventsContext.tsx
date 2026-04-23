@@ -2,14 +2,14 @@ import { createContext } from "react";
 import { Event } from "../types";
 
 interface EventsContextType {
-	events: Event[];
-	isLoading: boolean;
+  events: Event[];
+  isLoading: boolean;
 }
 
 // Initial state
 const initialState: EventsContextType = {
-	events: [],
-	isLoading: true,
+  events: [],
+  isLoading: true,
 };
 
 // Create the context

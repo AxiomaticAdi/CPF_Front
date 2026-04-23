@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ScrollToTop() {
-	const location = useLocation();
+  const location = useLocation();
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, [location]); // Dependency array with location to trigger effect on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]); // Dependency array with location to trigger effect on route change
 
-	return null; // This component does not render anything
+  return null; // This component does not render anything
 }

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 
 const TermsOfUseRedirect: React.FC = () => {
-	useEffect(() => {
-		window.location.href = `https://www.castlepeakfarmsd.com/terms-of-use.html`;
-	}, []);
+  useEffect(() => {
+    window.location.href = `https://www.castlepeakfarmsd.com/terms-of-use.html`;
+  }, []);
 
-	return null;
+  return null;
 };
 
 export default TermsOfUseRedirect;
