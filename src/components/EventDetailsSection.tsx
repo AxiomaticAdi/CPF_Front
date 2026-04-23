@@ -1,6 +1,7 @@
 import DOMPurify from "dompurify";
 import { Event } from "../types";
 import BadgePrice from "./Badges/BadgePrice";
+import { hasDeposit } from "../helpers/deposit";
 
 interface EventDetailsSectionProps {
   event: Event;
@@ -15,9 +16,6 @@ export default function EventDetailsSection({
   const sanitizedDescription = DOMPurify.sanitize(event.description);
 
   const fmt = (n: number) => (Number.isInteger(n) ? n : n.toFixed(2));
-  const deposit = event.depositPrice;
-  const remainingPerTicket =
-    deposit !== undefined ? event.price - deposit : undefined;
 
   return (
     <div className="flex flex-col items-center">
@@ -70,15 +68,15 @@ export default function EventDetailsSection({
 
       <p>{remainingTickets} remaining tickets</p>
 
-      {deposit !== undefined && remainingPerTicket !== undefined && (
+      {hasDeposit(event) && (
         <div className="mt-3 text-sm text-gray-600 text-center">
           <p>
             <span className="font-semibold">Deposit (due today):</span> $
-            {fmt(deposit)} per ticket
+            {fmt(event.depositPrice)} per ticket
           </p>
           <p>
             <span className="font-semibold">Remaining (due at event):</span> $
-            {fmt(remainingPerTicket)} per ticket
+            {fmt(event.price - event.depositPrice)} per ticket
           </p>
           <p>
             <span className="font-semibold">Full price:</span> $

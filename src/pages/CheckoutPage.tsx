@@ -8,6 +8,7 @@ import Page from "../components/Page";
 import { Event } from "../types";
 import LoadingSpinner from "../components/LoadingSpinner";
 import EventDetailsSection from "../components/EventDetailsSection";
+import { hasDeposit } from "../helpers/deposit";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -93,15 +94,15 @@ const CheckoutPage: React.FC = () => {
     );
   }
 
-  const isDeposit = event.depositPrice !== undefined;
-  const chargePrice = event.depositPrice ?? event.price;
+  const isDeposit = hasDeposit(event);
+  const chargePrice = isDeposit ? event.depositPrice : event.price;
   const totalCharge = ticketQuantityNum * chargePrice;
   const formattedTotalCharge = Number.isInteger(totalCharge)
     ? totalCharge
     : totalCharge.toFixed(2);
 
   const remainingPerTicket = isDeposit
-    ? event.price - event.depositPrice!
+    ? event.price - event.depositPrice
     : undefined;
   const formattedRemainingPerTicket =
     remainingPerTicket !== undefined
